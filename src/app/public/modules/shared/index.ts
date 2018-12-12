@@ -1,1 +1,1 @@
-export * from './actionbar-resources.module';
+export * from './action-bar-resources.module';

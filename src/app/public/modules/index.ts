@@ -1,1 +1,1 @@
-export * from './summary-actionbar';
+export * from './summary-action-bar';

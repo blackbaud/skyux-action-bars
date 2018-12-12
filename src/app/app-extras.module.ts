@@ -15,29 +15,29 @@ import {
 } from '@skyux/modals';
 
 import {
-  SkySummaryActionbarModule
+  SkySummaryActionBarModule
 } from './public';
 
 import {
-  SkySummaryActionbarModalDemoComponent
-} from './visual/summary-actionbar/summary-actionbar-modal-demo.component';
+  SkySummaryActionBarModalDemoComponent
+} from './visual/summary-action-bar/summary-action-bar-modal-demo.component';
 
 @NgModule({
   imports: [
     SkyKeyInfoModule,
     SkyModalModule,
-    SkySummaryActionbarModule,
+    SkySummaryActionBarModule,
     NoopAnimationsModule
   ],
   exports: [
     SkyKeyInfoModule,
     SkyModalModule,
-    SkySummaryActionbarModule,
+    SkySummaryActionBarModule,
     NoopAnimationsModule
   ],
   providers: [],
   entryComponents: [
-    SkySummaryActionbarModalDemoComponent
+    SkySummaryActionBarModalDemoComponent
   ]
 })
 export class AppExtrasModule { }
