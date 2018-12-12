@@ -3,19 +3,41 @@ import {
 } from '@angular/core';
 
 import {
-  SkySampleModule
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
+
+import {
+  SkyKeyInfoModule
+} from '@skyux/indicators';
+
+import {
+  SkyModalModule
+} from '@skyux/modals';
+
+import {
+  SkySummaryActionbarModule
 } from './public';
 
-const temp = require('raw-loader!../assets/locales/resources_en_US.json');
+import {
+  SkySummaryActionbarModalDemoComponent
+} from './visual/summary-actionbar/summary-actionbar-modal-demo.component';
 
 @NgModule({
   imports: [
-    SkySampleModule
+    SkyKeyInfoModule,
+    SkyModalModule,
+    SkySummaryActionbarModule,
+    NoopAnimationsModule
   ],
   exports: [
-    SkySampleModule
+    SkyKeyInfoModule,
+    SkyModalModule,
+    SkySummaryActionbarModule,
+    NoopAnimationsModule
   ],
   providers: [],
-  entryComponents: []
+  entryComponents: [
+    SkySummaryActionbarModalDemoComponent
+  ]
 })
 export class AppExtrasModule { }
