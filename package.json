@@ -1,0 +1,33 @@
+{
+  "name": "@skyux/sample",
+  "version": "3.0.0-alpha.x",
+  "description": "SKY UX Sample",
+  "main": "bundles/bundle.umd.js",
+  "module": "index.ts",
+  "scripts": {
+    "build": "skyux build-public-library",
+    "skyux": "skyux",
+    "start": "skyux serve --hmr",
+    "test": "skyux test --coverage library --logFormat none",
+    "test:visual": "skyux e2e --logFormat none",
+    "test:ci": "npm run test && npm run test:visual"
+  },
+  "keywords": [],
+  "author": "Blackbaud",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackbaud/skyux-sample.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blackbaud/skyux-sample/issues"
+  },
+  "homepage": "https://github.com/blackbaud/skyux-sample#readme",
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@blackbaud/skyux": "2.33.1",
+    "@blackbaud/skyux-builder": "1.30.0",
+    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.5"
+  }
+}
