@@ -10,8 +10,8 @@
   <div *ngIf="isXsScreen || actions.length > 4">
       <sky-dropdown
         buttonType="ellipsis-h"
+        [attr.title]="'skyux_summary_action_bar_open_secondary' | skyLibResources"
       >
-        <!-- [attr.title]="'skyux_summary_action_bar_open_secondary' | skyLibResources" -->
         <sky-dropdown-menu>
           <ng-container *ngTemplateOutlet="summaryActionBarSecondaryActions"></ng-container>
         </sky-dropdown-menu>
