@@ -3,18 +3,20 @@ import {
   Component,
   EventEmitter,
   Input,
-  Output
+  Output,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'sky-summary-action-bar-secondary-action',
   templateUrl: './summary-action-bar-secondary-action.component.html',
-  styleUrls: ['./summary-action-bar-secondary-action.component.scss']
+  styleUrls: ['./summary-action-bar-secondary-action.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarSecondaryActionComponent {
 
   @Input()
-  public isDisabled: boolean;
+  public isDisabled = false;
 
   public set isDropdown(value: boolean) {
     this._isDropdown = value;

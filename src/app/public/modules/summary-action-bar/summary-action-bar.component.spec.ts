@@ -140,13 +140,13 @@ describe('Summary Action Bar action components', () => {
 
   it('should set a new margin on the body if the window is resized', () => {
     let adapter: SkySummaryActionBarAdapterService = TestBed.get(SkySummaryActionBarAdapterService);
-    spyOn(adapter, 'adjustForActionBar').and.stub();
+    spyOn(adapter, 'adjustWindowMarginForActionBar').and.stub();
     fixture.detectChanges();
     let resizeEvent: any = document.createEvent('CustomEvent');
     resizeEvent.initEvent('resize', true, true);
     window.dispatchEvent(resizeEvent);
     fixture.detectChanges();
-    expect(adapter.adjustForActionBar).toHaveBeenCalledTimes(2);
+    expect(adapter.adjustWindowMarginForActionBar).toHaveBeenCalledTimes(2);
   });
 
   it('should remove the margin on the body if the action bar is destroyed', () => {
@@ -201,52 +201,52 @@ describe('Summary Action Bar action components', () => {
     expect((<HTMLElement>document.querySelector('.sky-modal-footer-container')).style.padding).toBe('0px');
   });
 
-  it('should set summaryCollapseMode to false when on a large screen', () => {
+  it('should set isSummaryCollapsible to false when on a large screen', () => {
     fixture.detectChanges();
-    expect(cmp.summaryActionBar.summaryCollapseMode).toBeFalsy();
+    expect(cmp.summaryActionBar.isSummaryCollapsible).toBeFalsy();
   });
 
-  it('should set summaryCollapseMode to true when on a large screen but normal modal', () => {
+  it('should set isSummaryCollapsible to true when on a large screen but normal modal', () => {
     cmp.hideMainActionBar = true;
     fixture.detectChanges();
     debugElement.query(By.css('#modal-trigger')).nativeElement.click();
     fixture.detectChanges();
-    expect(cmp.openedModal.summaryActionBar.summaryCollapseMode).toBeTruthy();
+    expect(cmp.openedModal.summaryActionBar.isSummaryCollapsible).toBeTruthy();
   });
 
-  it('should set summaryCollapseMode to false when on a large screen and full screen modal', () => {
+  it('should set isSummaryCollapsible to false when on a large screen and full screen modal', () => {
     cmp.hideMainActionBar = true;
     fixture.detectChanges();
     debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
     fixture.detectChanges();
-    expect(cmp.openedModal.summaryActionBar.summaryCollapseMode).toBeFalsy();
+    expect(cmp.openedModal.summaryActionBar.isSummaryCollapsible).toBeFalsy();
   });
 
-  it('should set summaryCollapseMode to true when on a xs screen', () => {
+  it('should set isSummaryCollapsible to true when on a xs screen', () => {
     fixture.detectChanges();
     mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
     fixture.detectChanges();
-    expect(cmp.summaryActionBar.summaryCollapseMode).toBeTruthy();
+    expect(cmp.summaryActionBar.isSummaryCollapsible).toBeTruthy();
   });
 
-  it('should set summaryCollapseMode to true when on a xs screen and normal modal', () => {
+  it('should set isSummaryCollapsible to true when on a xs screen and normal modal', () => {
     cmp.hideMainActionBar = true;
     fixture.detectChanges();
     debugElement.query(By.css('#modal-trigger')).nativeElement.click();
     fixture.detectChanges();
     mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
     fixture.detectChanges();
-    expect(cmp.openedModal.summaryActionBar.summaryCollapseMode).toBeTruthy();
+    expect(cmp.openedModal.summaryActionBar.isSummaryCollapsible).toBeTruthy();
   });
 
-  it('should set summaryCollapseMode to true when on a xs screen and full screen modal', () => {
+  it('should set isSummaryCollapsible to true when on a xs screen and full screen modal', () => {
     cmp.hideMainActionBar = true;
     fixture.detectChanges();
     debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
     fixture.detectChanges();
     mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
     fixture.detectChanges();
-    expect(cmp.openedModal.summaryActionBar.summaryCollapseMode).toBeTruthy();
+    expect(cmp.openedModal.summaryActionBar.isSummaryCollapsible).toBeTruthy();
   });
 
   it('should set isSummaryCollapsed to false when moving from a xs screen to a large screen', () => {

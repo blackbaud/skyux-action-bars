@@ -4,7 +4,8 @@ import {
   Component,
   ContentChild,
   ElementRef,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -38,20 +39,21 @@ let nextId = 0;
   selector: 'sky-summary-action-bar',
   templateUrl: './summary-action-bar.component.html',
   styleUrls: ['./summary-action-bar.component.scss'],
-  animations: [skyAnimationSlide]
+  animations: [skyAnimationSlide],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
 
   @ContentChild(SkySummaryActionBarSummaryComponent, { read: ElementRef })
   public summaryElement: ElementRef;
 
-  public summaryCollapseMode: boolean;
+  public isSummaryCollapsible = false;
 
-  public isSummaryCollapsed: boolean;
+  public isSummaryCollapsed = false;
 
   public slideDirection: string = 'down';
 
-  public inModalFooter: boolean;
+  public inModalFooter = false;
 
   public summaryId: string = `sky-summary-action-bar-summary-${++nextId}`;
 
@@ -72,14 +74,14 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
     if (summaryActionBarType === SkySummaryActionBarType.Page) {
       this.setupReactiveState();
 
-      this.adapterService.adjustForActionBar();
+      this.adapterService.adjustWindowMarginForActionBar();
     } else {
-      this.adapterService.addModalFooterClass();
+      this.adapterService.addModalFooterStyling();
 
       if (summaryActionBarType === SkySummaryActionBarType.FullPageModal) {
         this.setupReactiveState();
       } else if (summaryActionBarType === SkySummaryActionBarType.StandardModal) {
-        this.summaryCollapseMode = true;
+        this.isSummaryCollapsible = true;
       }
     }
     this.changeDetector.detectChanges();
@@ -87,7 +89,7 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
 
   public ngOnDestroy(): void {
     if (!this.inModalFooter) {
-      this.adapterService.adjustForActionBar(true);
+      this.adapterService.adjustWindowMarginForActionBar(true);
       this.adapterService.removeResizeListener();
     }
 
@@ -97,10 +99,10 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
   }
 
   public summaryContentExists(): boolean {
-    if (this.summaryElement && this.summaryElement.nativeElement.children.length > 0) {
-      return true;
-    }
-    return false;
+    return (
+      this.summaryElement &&
+      this.summaryElement.nativeElement.children.length > 0
+    );
   }
 
   public showSummarySection(): void {
@@ -128,18 +130,19 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
   private setupReactiveState() {
     this.mediaQuerySubscription = this.mediaQueryService.subscribe((args: SkyMediaBreakpoints) => {
       if (args === SkyMediaBreakpoints.xs) {
-        this.summaryCollapseMode = true;
+        this.isSummaryCollapsible = true;
       } else {
-        this.summaryCollapseMode = false;
+        this.isSummaryCollapsible = false;
         this.isSummaryCollapsed = false;
         this.slideDirection = 'down';
       }
+      this.changeDetector.detectChanges();
     });
 
     this.adapterService.setupResizeListener();
 
     if (this.mediaQueryService.current === SkyMediaBreakpoints.xs) {
-      this.summaryCollapseMode = true;
+      this.isSummaryCollapsible = true;
     }
   }
 }

@@ -1,7 +1,8 @@
 import {
   Injectable,
   Renderer2,
-  RendererFactory2
+  RendererFactory2,
+  OnDestroy
 } from '@angular/core';
 
 import {
@@ -17,10 +18,13 @@ import 'rxjs/add/observable/fromEvent';
 import {
   SkyWindowRefService
 } from '@skyux/core';
-import { SkySummaryActionBarType } from './types';
+
+import {
+  SkySummaryActionBarType
+} from './types';
 
 @Injectable()
-export class SkySummaryActionBarAdapterService {
+export class SkySummaryActionBarAdapterService implements OnDestroy {
 
   private renderer: Renderer2;
 
@@ -33,7 +37,13 @@ export class SkySummaryActionBarAdapterService {
     this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
   }
 
-  public adjustForActionBar(destroying?: boolean): void {
+  public ngOnDestroy() {
+    if (this.resizeSubscription) {
+      this.resizeSubscription.unsubscribe();
+    }
+  }
+
+  public adjustWindowMarginForActionBar(destroying?: boolean): void {
     const window = this.windowRef.getWindow();
     const body = window.document.body;
     if (destroying) {
@@ -49,7 +59,7 @@ export class SkySummaryActionBarAdapterService {
     this.resizeSubscription = Observable
       .fromEvent(windowObj, 'resize')
       .subscribe(() => {
-        this.adjustForActionBar();
+        this.adjustWindowMarginForActionBar();
       });
   }
 
@@ -74,7 +84,7 @@ export class SkySummaryActionBarAdapterService {
     return SkySummaryActionBarType.Page;
   }
 
-  public addModalFooterClass(): void {
+  public addModalFooterStyling(): void {
     const window = this.windowRef.getWindow();
     const modalFooterEl = <HTMLElement>window.document.getElementsByClassName('sky-modal-footer-container')[0];
     this.renderer.setStyle(modalFooterEl, 'padding', 0);

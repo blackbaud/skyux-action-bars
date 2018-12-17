@@ -3,6 +3,6 @@ import {
   SkyLibResourcesProvider
 } from '@skyux/i18n';
 
-export class SkyActionBarResourcesProvider implements SkyLibResourcesProvider {
+export class SkyActionBarsResourcesProvider implements SkyLibResourcesProvider {
   public getString: (localeInfo: SkyAppLocaleInfo, name: string) => string;
 }

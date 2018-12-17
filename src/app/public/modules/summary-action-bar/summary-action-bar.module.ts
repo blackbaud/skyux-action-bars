@@ -28,7 +28,7 @@ import {
 } from '@skyux/popovers';
 
 import {
-  SkyActionBarResourcesModule
+  SkyActionBarsResourcesModule
 } from '../shared';
 
 import {
@@ -68,7 +68,7 @@ import {
     SkyDropdownModule,
     SkyI18nModule,
     SkyIconModule,
-    SkyActionBarResourcesModule,
+    SkyActionBarsResourcesModule,
     SkyMediaQueryModule
   ],
   providers: [

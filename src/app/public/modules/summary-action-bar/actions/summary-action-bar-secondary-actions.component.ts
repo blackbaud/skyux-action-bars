@@ -4,7 +4,8 @@ import {
   Component,
   ContentChildren,
   OnDestroy,
-  QueryList
+  QueryList,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -23,14 +24,15 @@ import {
 @Component({
   selector: 'sky-summary-action-bar-secondary-actions',
   templateUrl: './summary-action-bar-secondary-actions.component.html',
-  styleUrls: ['./summary-action-bar-secondary-actions.component.scss']
+  styleUrls: ['./summary-action-bar-secondary-actions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarSecondaryActionsComponent implements AfterContentInit, OnDestroy {
 
   @ContentChildren(SkySummaryActionBarSecondaryActionComponent)
   public actions: QueryList<SkySummaryActionBarSecondaryActionComponent>;
 
-  public isXsScreen: boolean;
+  public isXsScreen = false;
 
   private mediaQuerySubscription: Subscription;
   private actionChanges: Subscription;

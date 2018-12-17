@@ -8,7 +8,8 @@ import {
 
 import {
   TestBed,
-  ComponentFixture
+  ComponentFixture,
+  async
 } from '@angular/core/testing';
 
 import {
@@ -20,7 +21,7 @@ import {
 } from '@skyux/core/testing';
 
 import {
-  expect, SkyAppTestUtility
+  expect
 } from '@skyux-sdk/testing';
 
 import {
@@ -104,42 +105,6 @@ describe('Summary Action Bar action components', () => {
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
 
-  it('should emit the actionClick event when the primary action button has enter pressed', () => {
-    spyOn(cmp, 'clilckHandler').and.stub();
-    fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-action-bar-primary-action button')).nativeElement;
-
-    SkyAppTestUtility.fireDomEvent(buttonEl, 'keydown',
-      { bubbles: true, cancelable: true, keyboardEventInit: { key: 'enter' } });
-
-    fixture.detectChanges();
-    expect(cmp.clilckHandler).toHaveBeenCalled();
-  });
-
-  it('should emit the actionClick event when the secondary action button has enter pressed', () => {
-    spyOn(cmp, 'clilckHandler').and.stub();
-    fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-action-bar-secondary-action button')).nativeElement;
-
-    SkyAppTestUtility.fireDomEvent(buttonEl, 'keydown',
-      { bubbles: true, cancelable: true, keyboardEventInit: { key: 'enter' } });
-
-    fixture.detectChanges();
-    expect(cmp.clilckHandler).toHaveBeenCalled();
-  });
-
-  it('should emit the actionClick event when the cancel button has enter pressed', () => {
-    spyOn(cmp, 'clilckHandler').and.stub();
-    fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-action-bar-cancel button')).nativeElement;
-
-    SkyAppTestUtility.fireDomEvent(buttonEl, 'keydown',
-      { bubbles: true, cancelable: true, keyboardEventInit: { key: 'enter' } });
-
-    fixture.detectChanges();
-    expect(cmp.clilckHandler).toHaveBeenCalled();
-  });
-
   it('should disable the element when the primary action button has isDisabled set to true', () => {
     cmp.disableButtons = true;
     fixture.detectChanges();
@@ -187,6 +152,40 @@ describe('Summary Action Bar action components', () => {
     cmp.secondaryActions.actions.forEach(action => {
       expect(action.isDropdown).toBeTruthy();
     });
+  });
+
+  describe('a11y', () => {
+
+    it('should be accessible (standard lg setup)', async(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (standard xs setup)', async(() => {
+      fixture.detectChanges();
+      mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (standard xs setup collapsed summary)', async(() => {
+      fixture.detectChanges();
+      mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        debugElement.query(By.css('.sky-summary-action-bar-details-collapse button'))
+          .nativeElement.click();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(fixture.nativeElement).toBeAccessible();
+        });
+      });
+    }));
+
   });
 
 });

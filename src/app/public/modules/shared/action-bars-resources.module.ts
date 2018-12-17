@@ -7,14 +7,14 @@ import {
 } from '@skyux/i18n';
 
 import {
-  SkyActionBarResourcesProvider
-} from '../../plugin-resources/action-bar-resources-provider';
+  SkyActionBarsResourcesProvider
+} from '../../plugin-resources/action-bars-resources-provider';
 
 @NgModule({
   providers: [{
     provide: SKY_LIB_RESOURCES_PROVIDERS,
-    useClass: SkyActionBarResourcesProvider,
+    useClass: SkyActionBarsResourcesProvider,
     multi: true
   }]
 })
-export class SkyActionBarResourcesModule { }
+export class SkyActionBarsResourcesModule { }
