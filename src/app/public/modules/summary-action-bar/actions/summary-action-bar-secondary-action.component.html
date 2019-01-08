@@ -12,8 +12,8 @@
     type="button"
     class="sky-btn sky-btn-secondary"
     [attr.role]="isDropdown ? undefined : 'menuitem'"
-    [disabled]="isDisabled"
-    (click)="buttonClicked()"
+    [disabled]="disabled"
+    (click)="onButtonClicked()"
   >
     <ng-content></ng-content>
   </button>

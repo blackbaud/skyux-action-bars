@@ -16,7 +16,7 @@ import {
 export class SkySummaryActionBarSecondaryActionComponent {
 
   @Input()
-  public isDisabled = false;
+  public disabled = false;
 
   public set isDropdown(value: boolean) {
     this._isDropdown = value;
@@ -36,7 +36,7 @@ export class SkySummaryActionBarSecondaryActionComponent {
     private changeDetector: ChangeDetectorRef
   ) { }
 
-  public buttonClicked(): void {
+  public onButtonClicked(): void {
     this.actionClick.emit();
   }
 }

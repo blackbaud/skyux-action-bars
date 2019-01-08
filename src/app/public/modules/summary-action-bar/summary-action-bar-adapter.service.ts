@@ -43,15 +43,17 @@ export class SkySummaryActionBarAdapterService implements OnDestroy {
     }
   }
 
-  public adjustWindowMarginForActionBar(destroying?: boolean): void {
+  public styleBodyElementForActionBar(): void {
     const window = this.windowRef.getWindow();
     const body = window.document.body;
-    if (destroying) {
-      this.renderer.setStyle(body, 'margin-bottom', '');
-    } else {
-      const actionBarEl = <HTMLElement>window.document.getElementsByClassName('sky-summary-action-bar').item(0);
-      this.renderer.setStyle(body, 'margin-bottom', actionBarEl.offsetHeight + 'px');
-    }
+    const actionBarEl = <HTMLElement>window.document.getElementsByClassName('sky-summary-action-bar').item(0);
+    this.renderer.setStyle(body, 'margin-bottom', actionBarEl.offsetHeight + 'px');
+  }
+
+  public revertBodyElementStyles(): void {
+    const window = this.windowRef.getWindow();
+    const body = window.document.body;
+    this.renderer.removeStyle(body, 'margin-bottom');
   }
 
   public setupResizeListener(): void {
@@ -59,7 +61,7 @@ export class SkySummaryActionBarAdapterService implements OnDestroy {
     this.resizeSubscription = Observable
       .fromEvent(windowObj, 'resize')
       .subscribe(() => {
-        this.adjustWindowMarginForActionBar();
+        this.styleBodyElementForActionBar();
       });
   }
 
@@ -84,7 +86,7 @@ export class SkySummaryActionBarAdapterService implements OnDestroy {
     return SkySummaryActionBarType.Page;
   }
 
-  public addModalFooterStyling(): void {
+  public styleModalFooter(): void {
     const window = this.windowRef.getWindow();
     const modalFooterEl = <HTMLElement>window.document.getElementsByClassName('sky-modal-footer-container')[0];
     this.renderer.setStyle(modalFooterEl, 'padding', 0);

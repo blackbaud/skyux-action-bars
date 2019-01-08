@@ -1,8 +1,8 @@
 <button
   type="button"
   class="sky-btn sky-btn-link sky-summary-action-bar-cancel"
-  [disabled]="isDisabled"
-  (click)="cancelClicked()"
+  [disabled]="disabled"
+  (click)="onCancelClicked()"
 >
   <ng-content></ng-content>
 </button>

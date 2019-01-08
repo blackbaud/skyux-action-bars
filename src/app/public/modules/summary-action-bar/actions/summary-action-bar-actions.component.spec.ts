@@ -105,21 +105,21 @@ describe('Summary Action Bar action components', () => {
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
 
-  it('should disable the element when the primary action button has isDisabled set to true', () => {
+  it('should disable the element when the primary action button has disabled set to true', () => {
     cmp.disableButtons = true;
     fixture.detectChanges();
     expect(debugElement.query(By.css('sky-summary-action-bar-primary-action button'))
       .nativeElement.disabled).toBeTruthy();
   });
 
-  it('should disable the element when the secondary action button has isDisabled set to true', () => {
+  it('should disable the element when the secondary action button has disabled set to true', () => {
     cmp.disableButtons = true;
     fixture.detectChanges();
     expect(debugElement.query(By.css('sky-summary-action-bar-secondary-action button'))
       .nativeElement.disabled).toBeTruthy();
   });
 
-  it('should disable the element when the cancel button has isDisabled set to true', () => {
+  it('should disable the element when the cancel button has disabled set to true', () => {
     cmp.disableButtons = true;
     fixture.detectChanges();
     expect(debugElement.query(By.css('sky-summary-action-bar-cancel button'))
@@ -128,20 +128,20 @@ describe('Summary Action Bar action components', () => {
 
   it('should have secondary actions with isDropdown as false on large screens', () => {
     fixture.detectChanges();
-    cmp.secondaryActions.actions.forEach(action => {
+    cmp.secondaryActions.secondaryActionComponents.forEach(action => {
       expect(action.isDropdown).toBeFalsy();
     });
   });
 
   it('should have secondary actions with isDropdown as false on large screens when there are five actions', () => {
     fixture.detectChanges();
-    cmp.secondaryActions.actions.forEach(action => {
+    cmp.secondaryActions.secondaryActionComponents.forEach(action => {
       expect(action.isDropdown).toBeFalsy();
     });
     fixture.detectChanges();
     cmp.extraActions = true;
     fixture.detectChanges();
-    cmp.secondaryActions.actions.forEach(action => {
+    cmp.secondaryActions.secondaryActionComponents.forEach(action => {
       expect(action.isDropdown).toBeTruthy();
     });
   });
@@ -149,7 +149,7 @@ describe('Summary Action Bar action components', () => {
   it('should have secondary actions with isDropdown as true on xs screens', () => {
     mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
     fixture.detectChanges();
-    cmp.secondaryActions.actions.forEach(action => {
+    cmp.secondaryActions.secondaryActionComponents.forEach(action => {
       expect(action.isDropdown).toBeTruthy();
     });
   });

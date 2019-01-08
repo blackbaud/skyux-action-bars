@@ -1,7 +1,8 @@
 <div
   class="sky-summary-action-bar"
   [ngClass]="{
-    'sky-summary-action-bar-summary-collapsible': isSummaryCollapsible, 'sky-summary-action-bar-modal': inModalFooter
+    'sky-summary-action-bar-summary-collapsible': isSummaryCollapsible,
+    'sky-summary-action-bar-modal': type === 1 || type === 2
   }"
 >
   <div
@@ -45,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="isSummaryCollapsed && isSummaryCollapsible"
+    <div *ngIf="isSummaryCollapsible && isSummaryCollapsed"
       class="sky-summary-action-bar-details-expand"
     >
       <button

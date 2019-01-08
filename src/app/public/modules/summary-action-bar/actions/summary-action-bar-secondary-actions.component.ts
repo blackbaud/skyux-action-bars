@@ -30,9 +30,9 @@ import {
 export class SkySummaryActionBarSecondaryActionsComponent implements AfterContentInit, OnDestroy {
 
   @ContentChildren(SkySummaryActionBarSecondaryActionComponent)
-  public actions: QueryList<SkySummaryActionBarSecondaryActionComponent>;
+  public secondaryActionComponents: QueryList<SkySummaryActionBarSecondaryActionComponent>;
 
-  public isXsScreen = false;
+  public isMobile = false;
 
   private mediaQuerySubscription: Subscription;
   private actionChanges: Subscription;
@@ -44,15 +44,15 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
 
   public ngAfterContentInit(): void {
     this.mediaQuerySubscription = this.mediaQueryService.subscribe((args: SkyMediaBreakpoints) => {
-      this.isXsScreen = args === SkyMediaBreakpoints.xs;
+      this.isMobile = args === SkyMediaBreakpoints.xs;
       this.checkAndUpdateChildrenType();
     });
 
-    this.actionChanges = this.actions.changes.subscribe(() => {
+    this.actionChanges = this.secondaryActionComponents.changes.subscribe(() => {
       this.checkAndUpdateChildrenType();
     });
     if (this.mediaQueryService.current === SkyMediaBreakpoints.xs) {
-      this.isXsScreen = true;
+      this.isMobile = true;
     }
     this.checkAndUpdateChildrenType();
   }
@@ -64,12 +64,12 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
 
   private checkAndUpdateChildrenType() {
     /* istanbul ignore else */
-    if (this.actions) {
+    if (this.secondaryActionComponents) {
       let isDropdown = false;
-      if (this.actions.length >= 5 || this.isXsScreen) {
+      if (this.secondaryActionComponents.length >= 5 || this.isMobile) {
         isDropdown = true;
       }
-      this.actions.forEach(action => {
+      this.secondaryActionComponents.forEach(action => {
         action.isDropdown = isDropdown;
       });
     }

@@ -15,12 +15,12 @@ import {
 export class SkySummaryActionBarCancelComponent {
 
   @Input()
-  public isDisabled = false;
+  public disabled = false;
 
   @Output()
   public actionClick = new EventEmitter<void>();
 
-  public cancelClicked(): void {
+  public onCancelClicked(): void {
     this.actionClick.emit();
   }
 }

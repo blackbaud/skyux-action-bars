@@ -28,7 +28,10 @@ import {
 import {
   SkySummaryActionBarAdapterService
 } from './summary-action-bar-adapter.service';
-import { SkySummaryActionBarType } from './types';
+
+import {
+  SkySummaryActionBarType
+} from './types';
 
 /**
  * Auto-incrementing integer used to generate unique ids for summary action bar components.
@@ -44,20 +47,23 @@ let nextId = 0;
 })
 export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
 
-  @ContentChild(SkySummaryActionBarSummaryComponent, { read: ElementRef })
-  public summaryElement: ElementRef;
-
-  public isSummaryCollapsible = false;
-
   public isSummaryCollapsed = false;
 
-  public slideDirection: string = 'down';
+  public get isSummaryCollapsible(): boolean {
+    return this.type === SkySummaryActionBarType.StandardModal ||
+      this.mediaQueryService.current === SkyMediaBreakpoints.xs;
+  }
 
-  public inModalFooter = false;
+  public type: SkySummaryActionBarType;
+
+  public slideDirection: string = 'down';
 
   public summaryId: string = `sky-summary-action-bar-summary-${++nextId}`;
 
   private mediaQuerySubscription: Subscription;
+
+  @ContentChild(SkySummaryActionBarSummaryComponent, { read: ElementRef })
+  private summaryElement: ElementRef;
 
   constructor(
     private adapterService: SkySummaryActionBarAdapterService,
@@ -67,30 +73,26 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
     ) { }
 
   public ngAfterViewInit(): void {
-    let summaryActionBarType = this.adapterService.getSummaryActionBarType(this.elementRef.nativeElement);
-    this.inModalFooter = summaryActionBarType === SkySummaryActionBarType.StandardModal ||
-      summaryActionBarType === SkySummaryActionBarType.FullPageModal;
-
-    if (summaryActionBarType === SkySummaryActionBarType.Page) {
+    this.type = this.adapterService.getSummaryActionBarType(this.elementRef.nativeElement);
+    if (this.type === SkySummaryActionBarType.Page) {
       this.setupReactiveState();
 
-      this.adapterService.adjustWindowMarginForActionBar();
+      this.adapterService.styleBodyElementForActionBar();
     } else {
-      this.adapterService.addModalFooterStyling();
+      this.adapterService.styleModalFooter();
 
-      if (summaryActionBarType === SkySummaryActionBarType.FullPageModal) {
+      if (this.type === SkySummaryActionBarType.FullPageModal) {
         this.setupReactiveState();
-      } else if (summaryActionBarType === SkySummaryActionBarType.StandardModal) {
-        this.isSummaryCollapsible = true;
       }
     }
     this.changeDetector.detectChanges();
   }
 
   public ngOnDestroy(): void {
-    if (!this.inModalFooter) {
-      this.adapterService.adjustWindowMarginForActionBar(true);
-      this.adapterService.removeResizeListener();
+    if (!(this.type === SkySummaryActionBarType.StandardModal ||
+      this.type === SkySummaryActionBarType.FullPageModal)) {
+        this.adapterService.revertBodyElementStyles();
+        this.adapterService.removeResizeListener();
     }
 
     if (this.mediaQuerySubscription) {
@@ -129,10 +131,7 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
 
   private setupReactiveState() {
     this.mediaQuerySubscription = this.mediaQueryService.subscribe((args: SkyMediaBreakpoints) => {
-      if (args === SkyMediaBreakpoints.xs) {
-        this.isSummaryCollapsible = true;
-      } else {
-        this.isSummaryCollapsible = false;
+      if (args !== SkyMediaBreakpoints.xs) {
         this.isSummaryCollapsed = false;
         this.slideDirection = 'down';
       }
@@ -140,9 +139,5 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
     });
 
     this.adapterService.setupResizeListener();
-
-    if (this.mediaQueryService.current === SkyMediaBreakpoints.xs) {
-      this.isSummaryCollapsible = true;
-    }
   }
 }

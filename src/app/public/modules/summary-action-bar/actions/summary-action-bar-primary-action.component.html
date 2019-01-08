@@ -1,8 +1,8 @@
 <button
   type="button"
   class="sky-btn sky-btn-primary"
-  [disabled]="isDisabled"
-  (click)="buttonClicked()"
+  [disabled]="disabled"
+  (click)="onButtonClicked()"
 >
   <ng-content></ng-content>
 </button>
