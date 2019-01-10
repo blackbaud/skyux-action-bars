@@ -1,7 +1,7 @@
 {
   "name": "@skyux/action-bars",
-  "version": "3.0.0-alpha.x",
-  "description": "SKY UX Sample",
+  "version": "3.0.0-rc.c",
+  "description": "SKY UX Action Bars",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "scripts": {
@@ -33,7 +33,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@blackbaud/skyux": "2.33.1",
+    "@blackbaud/skyux": "2.38.0",
     "@blackbaud/skyux-builder": "1.30.0",
     "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.5"
   }
