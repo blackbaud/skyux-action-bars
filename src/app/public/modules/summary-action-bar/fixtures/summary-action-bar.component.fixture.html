@@ -20,7 +20,7 @@
   <sky-summary-action-bar-actions>
     <sky-summary-action-bar-primary-action
       [disabled]="disableButtons"
-      (actionClick)="clilckHandler()"
+      (actionClick)="clickHandler()"
     >
       Primary action
     </sky-summary-action-bar-primary-action>
@@ -28,38 +28,38 @@
       Foo
       <sky-summary-action-bar-secondary-action
         [disabled]="disableButtons"
-        (actionClick)="clilckHandler()"
+        (actionClick)="clickHandler()"
       >
         Secondary action
       </sky-summary-action-bar-secondary-action>
       <sky-summary-action-bar-secondary-action
         [disabled]="disableButtons"
-        (actionClick)="clilckHandler()"
+        (actionClick)="clickHandler()"
       >
         Secondary action 2
       </sky-summary-action-bar-secondary-action>
       <sky-summary-action-bar-secondary-action *ngIf="extraActions"
         [disabled]="disableButtons"
-        (actionClick)="clilckHandler()"
+        (actionClick)="clickHandler()"
       >
         Secondary action 3
       </sky-summary-action-bar-secondary-action>
       <sky-summary-action-bar-secondary-action *ngIf="extraActions"
         [disabled]="disableButtons"
-        (actionClick)="clilckHandler()"
+        (actionClick)="clickHandler()"
       >
         Secondary action 4
       </sky-summary-action-bar-secondary-action>
       <sky-summary-action-bar-secondary-action *ngIf="extraActions"
         [disabled]="disableButtons"
-        (actionClick)="clilckHandler()"
+        (actionClick)="clickHandler()"
       >
         Secondary action 5
       </sky-summary-action-bar-secondary-action>
     </sky-summary-action-bar-secondary-actions>
     <sky-summary-action-bar-cancel
       [disabled]="disableButtons"
-      (actionClick)="clilckHandler()"
+      (actionClick)="clickHandler()"
     >
       Cancel
     </sky-summary-action-bar-cancel>

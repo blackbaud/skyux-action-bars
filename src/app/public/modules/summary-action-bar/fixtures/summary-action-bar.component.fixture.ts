@@ -47,7 +47,7 @@ export class SkySummaryActionBarTestComponent {
     private modalService: SkyModalService
   ) { }
 
-  public clilckHandler() {
+  public clickHandler() {
     return true;
   }
 

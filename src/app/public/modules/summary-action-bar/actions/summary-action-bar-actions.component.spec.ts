@@ -82,27 +82,27 @@ describe('Summary Action Bar action components', () => {
   });
 
   it('should emit the actionClick event when the primary action button is clicked', () => {
-    spyOn(cmp, 'clilckHandler').and.stub();
+    spyOn(cmp, 'clickHandler').and.stub();
     fixture.detectChanges();
     debugElement.query(By.css('sky-summary-action-bar-primary-action button')).nativeElement.click();
     fixture.detectChanges();
-    expect(cmp.clilckHandler).toHaveBeenCalled();
+    expect(cmp.clickHandler).toHaveBeenCalled();
   });
 
   it('should emit the actionClick event when the secondary action button is clicked', () => {
-    spyOn(cmp, 'clilckHandler').and.stub();
+    spyOn(cmp, 'clickHandler').and.stub();
     fixture.detectChanges();
     debugElement.query(By.css('sky-summary-action-bar-secondary-action button')).nativeElement.click();
     fixture.detectChanges();
-    expect(cmp.clilckHandler).toHaveBeenCalled();
+    expect(cmp.clickHandler).toHaveBeenCalled();
   });
 
   it('should emit the actionClick event when the cancel button is clicked', () => {
-    spyOn(cmp, 'clilckHandler').and.stub();
+    spyOn(cmp, 'clickHandler').and.stub();
     fixture.detectChanges();
     debugElement.query(By.css('sky-summary-action-bar-cancel button')).nativeElement.click();
     fixture.detectChanges();
-    expect(cmp.clilckHandler).toHaveBeenCalled();
+    expect(cmp.clickHandler).toHaveBeenCalled();
   });
 
   it('should disable the element when the primary action button has disabled set to true', () => {
