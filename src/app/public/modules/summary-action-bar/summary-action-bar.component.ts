@@ -114,10 +114,7 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
       this.type === SkySummaryActionBarType.FullPageModal)) {
       this.adapterService.revertBodyElementStyles();
       this.removeResizeListener();
-
-      if (this.type === SkySummaryActionBarType.Tab) {
-        this.removeTabListener();
-      }
+      this.removeTabListener();
     }
 
     if (this.mediaQuerySubscription) {
