@@ -177,12 +177,12 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
       });
     }
 
-    const config = { attribute: true, attributeFilter: ['hidden'], childList: false, characterDate: false };
+    const config = { attributes: true, attributeFilter: ['hidden'], childList: false, characterDate: false };
     let el = this.elementRef.nativeElement;
     do {
       if (el.classList.contains('sky-tab')) {
-        this.observer.observe(el, config);
-      }
+         this.observer.observe(el, config);
+       }
       el = el.parentElement;
       // tslint:disable-next-line:no-null-keyword
     } while (el !== null && el.nodeType === 1);
