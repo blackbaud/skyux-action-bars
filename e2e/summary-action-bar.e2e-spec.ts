@@ -89,4 +89,21 @@ describe('Summary Action Bar', () => {
       screenshotName: 'summary-action-bar-full-modal-collapsed'
     });
   });
+
+  it('should match previous tab without summary action bar screenshot', (done) => {
+    SkyHostBrowser.get('visual/tab-summary-action-bar');
+    SkyHostBrowser.setWindowBreakpoint('lg');
+    expect('#screenshot-tabset').toMatchBaselineScreenshot(done, {
+      screenshotName: 'summary-action-bar-tab-empty'
+    });
+  });
+
+  it('should match previous tab with a summary action bar screenshot', (done) => {
+    SkyHostBrowser.get('visual/tab-summary-action-bar');
+    SkyHostBrowser.setWindowBreakpoint('lg');
+    element(by.css('#sky-tab-2-nav-btn a')).click();
+    expect('#screenshot-tabset').toMatchBaselineScreenshot(done, {
+      screenshotName: 'summary-action-bar-tab'
+    });
+  });
 });
