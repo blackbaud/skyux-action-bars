@@ -181,8 +181,8 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
     let el = this.elementRef.nativeElement;
     do {
       if (el.classList.contains('sky-tab')) {
-         this.observer.observe(el, config);
-       }
+        this.observer.observe(el, config);
+      }
       el = el.parentElement;
       // tslint:disable-next-line:no-null-keyword
     } while (el !== null && el.nodeType === 1);
