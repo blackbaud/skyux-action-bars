@@ -30,13 +30,8 @@ import {
   SkySummaryActionBarModalDemoComponent
 } from './visual/summary-action-bar/summary-action-bar-modal-demo.component';
 
-import {
-  AppSkyModule
-} from './app-sky.module';
-
 @NgModule({
   exports: [
-    AppSkyModule,
     SkyAppLinkModule,
     SkyKeyInfoModule,
     SkyModalModule,
