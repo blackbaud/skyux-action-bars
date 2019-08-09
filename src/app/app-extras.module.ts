@@ -11,12 +11,16 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyModalModule
+  SkyModalModule, SkyConfirmModule
 } from '@skyux/modals';
 
 import {
   SkyTabsModule
 } from '@skyux/tabs';
+
+import {
+  SkySplitViewModule
+} from '@skyux/split-view';
 
 import {
   SkySummaryActionBarModule
@@ -39,6 +43,8 @@ import {
     SkyModalModule,
     SkySummaryActionBarModule,
     SkyTabsModule,
+    SkySplitViewModule,
+    SkyConfirmModule,
     NoopAnimationsModule
   ],
   providers: [],
