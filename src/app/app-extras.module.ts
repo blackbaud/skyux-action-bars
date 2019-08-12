@@ -11,7 +11,8 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyModalModule, SkyConfirmModule
+  SkyModalModule,
+  SkyConfirmModule
 } from '@skyux/modals';
 
 import {
@@ -37,12 +38,12 @@ import {
 @NgModule({
   exports: [
     SkyAppLinkModule,
+    SkyConfirmModule,
     SkyKeyInfoModule,
     SkyModalModule,
     SkySummaryActionBarModule,
     SkyTabsModule,
     SkySplitViewModule,
-    SkyConfirmModule,
     NoopAnimationsModule
   ],
   providers: [],
