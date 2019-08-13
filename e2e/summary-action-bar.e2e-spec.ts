@@ -106,4 +106,12 @@ describe('Summary Action Bar', () => {
       screenshotName: 'summary-action-bar-tab'
     });
   });
+
+  it('should match previous split view with a summary action bar screenshot', (done) => {
+    SkyHostBrowser.get('visual/split-view-summary-action-bar');
+    SkyHostBrowser.setWindowBreakpoint('lg');
+    expect('#screenshot-split-view').toMatchBaselineScreenshot(done, {
+      screenshotName: 'summary-action-bar-split-view'
+    });
+  });
 });
