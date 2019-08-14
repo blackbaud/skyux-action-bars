@@ -1,6 +1,6 @@
 {
   "name": "@skyux/action-bars",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "SKY UX Action Bars",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -63,7 +63,7 @@
     "@skyux/omnibar-interop": "3.1.0",
     "@skyux/popovers": "3.1.1",
     "@skyux/router": "3.1.1",
-    "@skyux/split-view": "3.0.0-alpha.1",
+    "@skyux/split-view": "3.0.0-rc.0",
     "@skyux/tabs": "3.1.0",
     "@skyux/theme": "3.7.0",
     "@types/core-js": "2.5.2",
