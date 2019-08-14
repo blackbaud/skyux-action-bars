@@ -1,6 +1,6 @@
 # 3.1.0 (2019-08-14)
 
-- Added the ability for the summary action bar component to be declared inside the split view component. [#16](https://github.com/blackbaud/skyux-action-bars/pull/16)
+- Added the ability to declare the summary action bar component inside the split view component. [#16](https://github.com/blackbaud/skyux-action-bars/pull/16)
 - Added support for @skyux-sdk/builder@3.8.1. [#15](https://github.com/blackbaud/skyux-action-bars/pull/15)
 
 # 3.0.1 (2019-03-19)
