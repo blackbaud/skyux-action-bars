@@ -1,6 +1,6 @@
 # 3.1.1 (2019-09-11)
 
-- Fixed the summary action bar component to properly style the body when the action bar expands and collapses. [#18](https://github.com/blackbaud/skyux-action-bars/pull/18)
+- Fixed the summary action bar component to properly update the page's bottom padding when the action bar expands and collapses. [#18](https://github.com/blackbaud/skyux-action-bars/pull/18)
 
 # 3.1.0 (2019-08-14)
 
