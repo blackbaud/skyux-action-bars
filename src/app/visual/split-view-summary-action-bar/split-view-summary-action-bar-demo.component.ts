@@ -14,12 +14,9 @@ import {
 } from 'rxjs';
 
 import {
+  SkySplitViewMessage,
   SkySplitViewMessageType
-} from '@skyux/split-view/modules/split-view/types/split-view-message-type';
-
-import {
-  SkySplitViewMessage
-} from '@skyux/split-view/modules/split-view/types/split-view-message';
+} from '@skyux/split-view';
 
 @Component({
   selector: 'split-view-summary-action-bar-demo',
