@@ -637,7 +637,7 @@ describe('Summary Action Bar component', () => {
     describe('body stylings', () => {
 
       it('should set a margin on the split view workspace content if the action bar is displayed on intial load', (done) => {
-        spyOn(window, 'setTimeout').and.callFake((fun: Function) => { fun(); });
+        spyOn(window as any, 'setTimeout').and.callFake((fun: Function) => { fun(); });
         fixture.detectChanges();
         fixture.whenStable().then(() => {
           fixture.detectChanges();
