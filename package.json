@@ -59,7 +59,7 @@
     "@skyux/omnibar-interop": "4.0.0-rc.0",
     "@skyux/popovers": "4.0.0-rc.2",
     "@skyux/router": "4.0.0-rc.0",
-    "@skyux/split-view": "3.0.0",
+    "@skyux/split-view": "4.0.0-rc.0",
     "@skyux/tabs": "4.0.0-rc.0",
     "@skyux/theme": "4.0.0-rc.2",
     "codelyzer": "5.2.2",
