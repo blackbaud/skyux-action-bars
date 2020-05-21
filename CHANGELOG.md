@@ -6,7 +6,7 @@
 
 ### Breaking changes
 
-- Dropped support for `rxjs@5`. Consumers may install `rxjs-compat@^6` to support older versions of `rxjs`. [#29](https://github.com/blackbaud/skyux-action-bars/pull/29)
+- Dropped support for `rxjs@5`. Consumers can install `rxjs-compat@^6` to support older versions of `rxjs`. [#29](https://github.com/blackbaud/skyux-action-bars/pull/29)
 
 # 3.1.3 (2019-11-19)
 
