@@ -1,10 +1,9 @@
 {
   "name": "@skyux/action-bars",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "SKY UX Action Bars",
   "scripts": {
     "build": "skyux build-public-library",
-    "skyux": "skyux",
     "start": "skyux serve --hmr",
     "test": "skyux test --coverage library --logFormat none",
     "test:visual": "skyux e2e --logFormat none"
