@@ -101,7 +101,7 @@ describe('Summary Action Bar', () => {
   it('should match previous tab with a summary action bar screenshot', (done) => {
     SkyHostBrowser.get('visual/tab-summary-action-bar');
     SkyHostBrowser.setWindowBreakpoint('lg');
-    element(by.css('sky-tab-button:nth-child(1) a')).click();
+    element(by.css('#sky-tab-2-nav-btn')).click();
     expect('#screenshot-tabset').toMatchBaselineScreenshot(done, {
       screenshotName: 'summary-action-bar-tab'
     });
