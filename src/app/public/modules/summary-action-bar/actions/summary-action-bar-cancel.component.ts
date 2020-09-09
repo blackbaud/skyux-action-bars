@@ -14,9 +14,15 @@ import {
 })
 export class SkySummaryActionBarCancelComponent {
 
+/**
+ * Indicates whether to disable the cancel action.
+ */
   @Input()
   public disabled = false;
 
+/**
+ * Fires when users click the cancel action.
+ */
   @Output()
   public actionClick = new EventEmitter<void>();
 

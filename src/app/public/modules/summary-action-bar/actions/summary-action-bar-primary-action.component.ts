@@ -14,9 +14,16 @@ import {
 })
 export class SkySummaryActionBarPrimaryActionComponent {
 
+/**
+ * Indicates whether to disable the primary action.
+ * @default false
+ */
   @Input()
   public disabled = false;
 
+/**
+ * Fires when users click the primary action.
+ */
   @Output()
   public actionClick = new EventEmitter<void>();
 

@@ -15,6 +15,10 @@ import {
 })
 export class SkySummaryActionBarSecondaryActionComponent {
 
+/**
+ * Indicates whether to disable a secondary action.
+ * @default false
+ */
   @Input()
   public disabled = false;
 
@@ -27,6 +31,9 @@ export class SkySummaryActionBarSecondaryActionComponent {
     return this._isDropdown;
   }
 
+/**
+ * Fires when users click a secondary action.
+ */
   @Output()
   public actionClick = new EventEmitter<void>();
 
