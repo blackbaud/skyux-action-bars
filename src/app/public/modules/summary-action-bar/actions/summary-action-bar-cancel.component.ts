@@ -6,6 +6,9 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
+/**
+ * Displays a cancel action.
+ */
 @Component({
   selector: 'sky-summary-action-bar-cancel',
   templateUrl: './summary-action-bar-cancel.component.html',
@@ -21,7 +24,7 @@ export class SkySummaryActionBarCancelComponent {
   public disabled = false;
 
 /**
- * Fires when users click the cancel action.
+ * Fires when users select the cancel action.
  */
   @Output()
   public actionClick = new EventEmitter<void>();

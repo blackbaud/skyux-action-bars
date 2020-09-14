@@ -7,6 +7,9 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
+/**
+ * Specifies secondary actions.
+ */
 @Component({
   selector: 'sky-summary-action-bar-secondary-action',
   templateUrl: './summary-action-bar-secondary-action.component.html',
@@ -32,7 +35,7 @@ export class SkySummaryActionBarSecondaryActionComponent {
   }
 
 /**
- * Fires when users click a secondary action.
+ * Fires when users select a secondary action.
  */
   @Output()
   public actionClick = new EventEmitter<void>();

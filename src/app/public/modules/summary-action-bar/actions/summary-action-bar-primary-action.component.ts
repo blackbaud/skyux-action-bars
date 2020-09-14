@@ -6,6 +6,9 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
+/**
+ * Displays a primary button.
+ */
 @Component({
   selector: 'sky-summary-action-bar-primary-action',
   templateUrl: './summary-action-bar-primary-action.component.html',
@@ -22,7 +25,7 @@ export class SkySummaryActionBarPrimaryActionComponent {
   public disabled = false;
 
 /**
- * Fires when users click the primary action.
+ * Fires when users select the primary action.
  */
   @Output()
   public actionClick = new EventEmitter<void>();
