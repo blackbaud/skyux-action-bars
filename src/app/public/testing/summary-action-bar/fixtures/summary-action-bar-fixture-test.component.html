@@ -2,60 +2,28 @@
   data-sky-id="test-summary-action-bar"
 >
   <sky-summary-action-bar-actions>
-    <sky-summary-action-bar-primary-action (actionClick)="printHello()">
-      Primary action
+    <sky-summary-action-bar-primary-action (actionClick)="primaryAction.click()"
+      [disabled]="primaryAction.isDisabled"
+    >
+      {{primaryAction.buttonText}}
     </sky-summary-action-bar-primary-action>
     <sky-summary-action-bar-secondary-actions>
-      Foo
-      <sky-summary-action-bar-secondary-action (actionClick)="printHello()">
-        Secondary action
-      </sky-summary-action-bar-secondary-action>
-      <sky-summary-action-bar-secondary-action (actionClick)="printHello()">
-        Secondary action 2
+      <sky-summary-action-bar-secondary-action *ngFor="let action of secondaryActions"
+        [disabled]="action.isDisabled"
+        (actionClick)="action.click()"
+      >
+        {{action.buttonText}}
       </sky-summary-action-bar-secondary-action>
     </sky-summary-action-bar-secondary-actions>
-    <sky-summary-action-bar-cancel (actionClick)="printHello()">
-      Cancel
+    <sky-summary-action-bar-cancel (actionClick)="cancelAction.click()"
+      [disabled]="cancelAction.isDisabled"
+    >
+      {{cancelAction.buttonText}}
     </sky-summary-action-bar-cancel>
   </sky-summary-action-bar-actions>
   <sky-summary-action-bar-summary>
     <div>
-      <sky-key-info>
-        <sky-key-info-value>$123.00</sky-key-info-value>
-        <sky-key-info-label>Field 1</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>$456.00</sky-key-info-value>
-        <sky-key-info-label>Field 2</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>18</sky-key-info-value>
-        <sky-key-info-label>Field 3</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>$123.00</sky-key-info-value>
-        <sky-key-info-label>Field 1</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>$456.00</sky-key-info-value>
-        <sky-key-info-label>Field 2</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>18</sky-key-info-value>
-        <sky-key-info-label>Field 3</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>$123.00</sky-key-info-value>
-        <sky-key-info-label>Field 1</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>$456.00</sky-key-info-value>
-        <sky-key-info-label>Field 2</sky-key-info-label>
-      </sky-key-info>
-      <sky-key-info>
-        <sky-key-info-value>18</sky-key-info-value>
-        <sky-key-info-label>Field 3</sky-key-info-label>
-      </sky-key-info>
+      {{summaryBody}}
     </div>
   </sky-summary-action-bar-summary>
 </sky-summary-action-bar>
