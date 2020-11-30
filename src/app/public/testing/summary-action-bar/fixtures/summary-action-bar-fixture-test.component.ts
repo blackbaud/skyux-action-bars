@@ -1,7 +1,10 @@
 import {
   Component
 } from '@angular/core';
-import { SkySummaryActionBarFixtureAction } from '../summary-action-bar-fixture-action';
+
+import {
+  SkySummaryActionBarFixtureAction
+} from '../summary-action-bar-fixture-action';
 
 @Component({
   selector: 'summary-action-bar',

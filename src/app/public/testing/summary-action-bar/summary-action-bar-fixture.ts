@@ -25,12 +25,12 @@ export class SkySummaryActionBarFixture {
   private debugEl: DebugElement;
 
   private get isResponsiveMode(): boolean {
-    return this.getSummaryExpandButton() !== undefined
-      || this.getSummaryCollapseButton() !== undefined;
+    const toggleButton = this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
+    return toggleButton !== undefined;
   }
 
   /**
-   * The cancel action.
+   * The cancel action model.
    */
   public get cancelAction(): SkySummaryActionBarFixtureAction {
     const cancelBtn = this.getCancelButton();
@@ -38,7 +38,7 @@ export class SkySummaryActionBarFixture {
   }
 
   /**
-   * The primary action.
+   * The primary action model.
    */
   public get primaryAction(): SkySummaryActionBarFixtureAction {
     const primaryBtn = this.getPrimaryActionButton();
@@ -46,7 +46,7 @@ export class SkySummaryActionBarFixture {
   }
 
   /**
-   * The collection of secondary actions.
+   * The collection of secondary action models.
    */
   public get secondaryActions(): SkySummaryActionBarFixtureAction[] {
     const secondaryBtns = this.getSecondaryActionButtons();
@@ -73,9 +73,6 @@ export class SkySummaryActionBarFixture {
     skyTestId: string
   ) {
     this.debugEl = SkyAppTestUtility.getDebugElementByTestId(fixture, skyTestId, 'sky-summary-action-bar');
-
-    fixture.detectChanges();
-    fixture.whenStable();
   }
 
   /**

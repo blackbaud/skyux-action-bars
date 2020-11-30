@@ -4,7 +4,8 @@ import {
 } from '@angular/core/testing';
 
 import {
-  expect
+  expect,
+  SkyAppTestUtility
 } from '@skyux-sdk/testing';
 
 import {
@@ -19,10 +20,6 @@ import {
 import {
   SkyKeyInfoModule
 } from '@skyux/indicators';
-
-import {
-  SkyAppTestUtility
-} from '@skyux-sdk/testing';
 
 import {
   SummaryActionBarTestComponent
