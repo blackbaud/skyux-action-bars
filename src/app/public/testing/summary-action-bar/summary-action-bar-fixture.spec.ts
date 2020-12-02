@@ -80,7 +80,7 @@ describe('Summary action bar fixture', () => {
   describe('primary action', () => {
 
     it('should expose primary action button default properties', async () => {
-      const actionSpy = spyOn(fixture.componentInstance, 'primaryActionClicked');
+      const actionSpy = spyOn(testComponent, 'primaryActionClicked');
       const action = summaryActionBarFixture.primaryAction;
 
       // verify button state
@@ -94,7 +94,7 @@ describe('Summary action bar fixture', () => {
 
     it('should expose primary action button default properties when responsive', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
-      const actionSpy = spyOn(fixture.componentInstance, 'primaryActionClicked');
+      const actionSpy = spyOn(testComponent, 'primaryActionClicked');
       const action = summaryActionBarFixture.primaryAction;
 
       // verify button state
@@ -106,7 +106,7 @@ describe('Summary action bar fixture', () => {
       expect(actionSpy).toHaveBeenCalled();
     });
 
-    it('should expose primary action button properties', async () => {
+    it('should expose primary action button properties if the properties change', async () => {
       // modify the defaults
       testComponent.primaryAction = {
         buttonText: 'some action',
@@ -128,7 +128,7 @@ describe('Summary action bar fixture', () => {
   describe('secondary actions', () => {
 
     it('should expose secondary action button default properties', async () => {
-      const actionSpy = spyOn(fixture.componentInstance, 'secondaryActionClicked');
+      const actionSpy = spyOn(testComponent, 'secondaryActionClicked');
       const actions = summaryActionBarFixture.secondaryActions;
 
       for (let i = 0; i < actions.length; i++) {
@@ -146,7 +146,7 @@ describe('Summary action bar fixture', () => {
 
     it('should expose secondary action button default properties when responsive', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
-      const actionSpy = spyOn(fixture.componentInstance, 'secondaryActionClicked');
+      const actionSpy = spyOn(testComponent, 'secondaryActionClicked');
       const actions = summaryActionBarFixture.secondaryActions;
 
       for (let i = 0; i < actions.length; i++) {
@@ -162,7 +162,7 @@ describe('Summary action bar fixture', () => {
       }
     });
 
-    it('should expose secondary action button properties', async () => {
+    it('should expose secondary action button properties if the properties change', async () => {
       // modify the defaults
       testComponent.secondaryActions = [
         {
@@ -190,7 +190,7 @@ describe('Summary action bar fixture', () => {
   describe('cancel button', () => {
 
     it('should expose cancel action button default properties', async () => {
-      const actionSpy = spyOn(fixture.componentInstance, 'cancelActionClicked');
+      const actionSpy = spyOn(testComponent, 'cancelActionClicked');
       const action = summaryActionBarFixture.cancelAction;
 
       // verify button state
@@ -204,7 +204,7 @@ describe('Summary action bar fixture', () => {
 
     it('should expose cancel action button default properties when responsive', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
-      const actionSpy = spyOn(fixture.componentInstance, 'cancelActionClicked');
+      const actionSpy = spyOn(testComponent, 'cancelActionClicked');
       const action = summaryActionBarFixture.cancelAction;
 
       // verify button state
@@ -216,7 +216,7 @@ describe('Summary action bar fixture', () => {
       expect(actionSpy).toHaveBeenCalled();
     });
 
-    it('should expose cancel action button properties', async () => {
+    it('should expose cancel action button properties if the properties change', async () => {
       // modify the defaults
       testComponent.cancelAction = {
         buttonText: 'some action',
@@ -244,6 +244,18 @@ describe('Summary action bar fixture', () => {
 
     it('should expose content body when responsive', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
+
+      // verify the content matches
+      const summaryBody = SkyAppTestUtility.getText(summaryActionBarFixture.summaryBody);
+      expect(summaryBody).toEqual(testComponent.summaryBody);
+    });
+
+    it('should expose content body even when not visible', async () => {
+      await initiateResponsiveMode(SkyMediaBreakpoints.xs);
+
+      // close the content
+      await summaryActionBarFixture.toggleSummaryContent();
+      expect(summaryActionBarFixture.summaryBodyIsVisible).toBeFalse();
 
       // verify the content matches
       const summaryBody = SkyAppTestUtility.getText(summaryActionBarFixture.summaryBody);

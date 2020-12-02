@@ -22,12 +22,6 @@ import {
  * Allows interaction with a SKY UX summary action bar component.
  */
 export class SkySummaryActionBarFixture {
-  private debugEl: DebugElement;
-
-  private get isResponsiveMode(): boolean {
-    const toggleButton = this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
-    return toggleButton !== undefined;
-  }
 
   /**
    * The cancel action model.
@@ -66,6 +60,13 @@ export class SkySummaryActionBarFixture {
   public get summaryBodyIsVisible(): boolean {
     const summaryEl = this.getSummaryElement();
     return summaryEl.clientHeight > 0;
+  }
+
+  private debugEl: DebugElement;
+
+  private get isResponsiveMode(): boolean {
+    const toggleButton = this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
+    return toggleButton !== undefined;
   }
 
   constructor(

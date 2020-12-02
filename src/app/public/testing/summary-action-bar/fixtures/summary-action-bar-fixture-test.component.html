@@ -2,8 +2,9 @@
   data-sky-id="test-summary-action-bar"
 >
   <sky-summary-action-bar-actions>
-    <sky-summary-action-bar-primary-action (actionClick)="primaryAction.click()"
+    <sky-summary-action-bar-primary-action
       [disabled]="primaryAction.isDisabled"
+      (actionClick)="primaryAction.click()"
     >
       {{primaryAction.buttonText}}
     </sky-summary-action-bar-primary-action>
@@ -15,8 +16,9 @@
         {{action.buttonText}}
       </sky-summary-action-bar-secondary-action>
     </sky-summary-action-bar-secondary-actions>
-    <sky-summary-action-bar-cancel (actionClick)="cancelAction.click()"
+    <sky-summary-action-bar-cancel
       [disabled]="cancelAction.isDisabled"
+      (actionClick)="cancelAction.click()"
     >
       {{cancelAction.buttonText}}
     </sky-summary-action-bar-cancel>
