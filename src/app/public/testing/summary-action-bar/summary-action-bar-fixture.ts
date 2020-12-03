@@ -48,13 +48,6 @@ export class SkySummaryActionBarFixture {
   }
 
   /**
-   * The summary body element.
-   */
-  public get summaryBody(): HTMLElement {
-    return this.getSummaryBodyElement();
-  }
-
-  /**
    * A flag indicating whether or not the summary content is visible.
    */
   public get summaryBodyIsVisible(): boolean {
@@ -96,7 +89,7 @@ export class SkySummaryActionBarFixture {
   /**
    * Toggles the summary content area open or closed, if in responsive mode.
    */
-  public async toggleSummaryContent(): Promise<void> {
+  public async toggleSummaryContentVisibility(): Promise<void> {
     const toggleButton = this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
 
     if (toggleButton !== undefined) {
@@ -108,6 +101,22 @@ export class SkySummaryActionBarFixture {
       this.fixture.detectChanges();
       return this.fixture.whenStable();
     }
+  }
+
+  /**
+   * Returns the first element that is a descendant of the node that matches the selector query
+   * within the summary body element.
+   */
+  public querySummaryBody(query: string): HTMLElement {
+    return this.querySummaryBodyElement(query);
+  }
+
+  /**
+   * Returns the all elements that are descendants of the node that matches the selector query
+   * within the summary body element.
+   */
+  public queryAllSummaryBody(query: string): NodeList {
+    return this.queryAllSummaryBodyElement(query);
   }
 
   //#region helpers
@@ -166,12 +175,6 @@ export class SkySummaryActionBarFixture {
     )?.nativeElement;
   }
 
-  private getSummaryBodyElement(): HTMLButtonElement {
-    return this.debugEl.query(
-      By.css('.sky-summary-action-bar-summary-body')
-    )?.nativeElement;
-  }
-
   private getSummaryCollapseButton(): HTMLButtonElement {
     return this.debugEl.query(
       By.css('.sky-summary-action-bar-details-collapse .sky-btn')
@@ -182,6 +185,14 @@ export class SkySummaryActionBarFixture {
     return this.debugEl.query(
       By.css('.sky-summary-action-bar-details-expand .sky-btn')
     )?.nativeElement;
+  }
+
+  private querySummaryBodyElement(query: string): HTMLElement {
+    return this.debugEl.nativeElement.querySelector(`sky-summary-action-bar-summary ${query}`);
+  }
+
+  private queryAllSummaryBodyElement(query: string): NodeList {
+    return this.debugEl.nativeElement.querySelectorAll(`sky-summary-action-bar-summary ${query}`);
   }
 
   //#endregion helpers

@@ -235,61 +235,61 @@ describe('Summary action bar fixture', () => {
 
   describe('summary content', () => {
 
-    it('should expose content body on large screen', async () => {
-      // verify the content matches
-      const summaryBody = SkyAppTestUtility.getText(summaryActionBarFixture.summaryBody);
-      expect(summaryBody).toEqual(testComponent.summaryBody);
+    it('should support summary body query selectors', async () => {
+      const summaryContent = summaryActionBarFixture.querySummaryBody('div');
+      expect(SkyAppTestUtility.getText(summaryContent)).toEqual(testComponent.summaryBody);
+    });
+
+    it('should support summary body query all selectors', async () => {
+      const results = summaryActionBarFixture.queryAllSummaryBody('div');
+      expect(results).toExist();
+      expect(results.length).toBe(1);
+
+      const summaryContent = results[0];
+      expect(SkyAppTestUtility.getText(summaryContent)).toEqual(testComponent.summaryBody);
     });
 
     it('should expose content body when responsive', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
 
-      // verify the content matches
-      const summaryBody = SkyAppTestUtility.getText(summaryActionBarFixture.summaryBody);
-      expect(summaryBody).toEqual(testComponent.summaryBody);
+      const summaryContent = summaryActionBarFixture.querySummaryBody('div');
+      expect(SkyAppTestUtility.getText(summaryContent)).toEqual(testComponent.summaryBody);
     });
 
     it('should expose content body even when not visible', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
 
       // close the content
-      await summaryActionBarFixture.toggleSummaryContent();
+      await summaryActionBarFixture.toggleSummaryContentVisibility();
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeFalse();
 
       // verify the content matches
-      const summaryBody = SkyAppTestUtility.getText(summaryActionBarFixture.summaryBody);
-      expect(summaryBody).toEqual(testComponent.summaryBody);
+      const summaryContent = summaryActionBarFixture.querySummaryBody('div');
+      expect(SkyAppTestUtility.getText(summaryContent)).toEqual(testComponent.summaryBody);
     });
 
     it('should open and close summary content when responsive', async () => {
       await initiateResponsiveMode(SkyMediaBreakpoints.xs);
 
-      // verify the content is open
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeTrue();
 
-      // close the content
-      await summaryActionBarFixture.toggleSummaryContent();
+      await summaryActionBarFixture.toggleSummaryContentVisibility();
 
-      // verify the content is closed
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeFalse();
 
-      // open the content
-      await summaryActionBarFixture.toggleSummaryContent();
+      await summaryActionBarFixture.toggleSummaryContentVisibility();
 
-      // verify the content is open
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeTrue();
     });
 
     it('toggleContent should do nothing on large screen', async () => {
-      // verify the content is open
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeTrue();
 
-      // close the content
-      await summaryActionBarFixture.toggleSummaryContent();
+      await summaryActionBarFixture.toggleSummaryContentVisibility();
 
-      // verify the content is still open
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeTrue();
     });
 
   });
+
 });
