@@ -106,6 +106,7 @@ export class SkySummaryActionBarFixture {
   /**
    * Returns the first element that is a descendant of the node that matches the selector query
    * within the summary body element.
+   * @param query The selector query to use.
    */
   public querySummaryBody(query: string): HTMLElement {
     return this.querySummaryBodyElement(query);
@@ -114,6 +115,7 @@ export class SkySummaryActionBarFixture {
   /**
    * Returns the all elements that are descendants of the node that matches the selector query
    * within the summary body element.
+   * @param query The selector query to use.
    */
   public queryAllSummaryBody(query: string): NodeList {
     return this.queryAllSummaryBodyElement(query);
