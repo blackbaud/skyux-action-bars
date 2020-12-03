@@ -264,8 +264,9 @@ describe('Summary action bar fixture', () => {
       expect(summaryActionBarFixture.summaryBodyIsVisible).toBeFalse();
 
       // verify the content matches
+      // - we use textContent since safari/firefox won't populate innerText for hidden elements
       const summaryContent = summaryActionBarFixture.querySummaryBody('div');
-      expect(SkyAppTestUtility.getText(summaryContent)).toEqual(testComponent.summaryBody);
+      expect(summaryContent.textContent.trim()).toEqual(testComponent.summaryBody);
     });
 
     it('should open and close summary content when responsive', async () => {
