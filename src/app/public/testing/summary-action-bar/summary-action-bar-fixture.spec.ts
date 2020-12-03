@@ -106,7 +106,7 @@ describe('Summary action bar fixture', () => {
       expect(actionSpy).toHaveBeenCalled();
     });
 
-    it('should expose primary action button properties if the properties change', async () => {
+    it('should expose primary action button properties if the properties change', () => {
       // modify the defaults
       testComponent.primaryAction = {
         buttonText: 'some action',
@@ -114,7 +114,6 @@ describe('Summary action bar fixture', () => {
         click: () => testComponent.primaryActionClicked()
       };
       fixture.detectChanges();
-      await fixture.whenStable();
 
       const action = summaryActionBarFixture.primaryAction;
 
