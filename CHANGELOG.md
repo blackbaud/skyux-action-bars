@@ -1,6 +1,6 @@
 # 4.1.0 (2020-12-04)
 
-- Added summary action bar test fixture. [#47](https://github.com/blackbaud/skyux-action-bars/pull/47)
+- Added a summary action bar test fixture. [#47](https://github.com/blackbaud/skyux-action-bars/pull/47)
 
 # 4.0.1 (2020-06-11)
 
