@@ -33,16 +33,26 @@
           class="sky-summary-action-bar-details-collapse"
         >
           <button
-            class="sky-btn sky-btn-secondary"
+            class="sky-btn"
             type="button"
             [attr.title]="'skyux_summary_action_bar_hide_summary' | skyLibResources"
             [attr.aria-controls]="summaryId"
             [attr.aria-expanded]="true"
+            [skyThemeClass]="{
+              'sky-btn-secondary' : 'default',
+              'sky-btn-icon': 'modern'
+            }"
             (click)="hideSummarySection()"
           >
-            <sky-icon
+            <sky-icon *skyThemeIf="'default'"
               icon="chevron-down"
-            ></sky-icon>
+            >
+            </sky-icon>
+            <sky-icon *skyThemeIf="'modern'"
+              icon="chevron-down"
+              iconType="skyux"
+            >
+            </sky-icon>
           </button>
         </div>
       </div>
@@ -51,16 +61,26 @@
       class="sky-summary-action-bar-details-expand"
     >
       <button
-        class="sky-btn sky-btn-secondary"
+        class="sky-btn"
         type="button"
         [attr.title]="'skyux_summary_action_bar_show_summary' | skyLibResources"
         [attr.aria-controls]="summaryId"
         [attr.aria-expanded]="false"
+        [skyThemeClass]="{
+          'sky-btn-secondary' : 'default',
+          'sky-btn-icon': 'modern'
+        }"
         (click)="showSummarySection()"
         >
-        <sky-icon
+        <sky-icon *skyThemeIf="'default'"
           icon="chevron-up"
-        ></sky-icon>
+        >
+        </sky-icon>
+        <sky-icon *skyThemeIf="'modern'"
+          icon="chevron-up"
+          iconType="skyux"
+        >
+        </sky-icon>
       </button>
     </div>
   </ng-container>

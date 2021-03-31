@@ -7,6 +7,11 @@ import {
 } from '@skyux/modals';
 
 import {
+  SkyThemeService,
+  SkyThemeSettings
+} from '@skyux/theme';
+
+import {
   SkySummaryActionBarModalDemoComponent
 } from './summary-action-bar-modal-demo.component';
 
@@ -18,7 +23,8 @@ import {
 export class SkySummaryActionBarDemoComponent {
 
   constructor(
-    private modalService: SkyModalService
+    private modalService: SkyModalService,
+    private themeSvc: SkyThemeService
   ) { }
 
   public printHello() {
@@ -31,5 +37,9 @@ export class SkySummaryActionBarDemoComponent {
 
   public openFullScreenModal() {
     this.modalService.open(SkySummaryActionBarModalDemoComponent, { fullPage: true });
+  }
+
+  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
+    this.themeSvc.setTheme(themeSettings);
   }
 }

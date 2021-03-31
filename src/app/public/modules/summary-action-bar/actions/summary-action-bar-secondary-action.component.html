@@ -10,9 +10,13 @@
 >
   <button
     type="button"
-    class="sky-btn sky-btn-secondary"
+    class="sky-btn"
     [attr.role]="isDropdown ? undefined : 'menuitem'"
     [disabled]="disabled"
+    [skyThemeClass]="{
+      'sky-btn-secondary' : 'default',
+      'sky-btn-default': 'modern'
+    }"
     (click)="onButtonClicked()"
   >
     <ng-content></ng-content>
