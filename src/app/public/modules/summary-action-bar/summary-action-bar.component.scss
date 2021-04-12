@@ -103,3 +103,13 @@
     }
   }
 }
+
+@include sky-theme-modern-dark {
+  .sky-summary-action-bar {
+    background-color: $sky-color-black;
+    box-shadow: none;
+  }
+  .sky-summary-action-bar-actions {
+    background-color: $sky-color-black;
+  }
+}
