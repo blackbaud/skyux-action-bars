@@ -81,7 +81,7 @@ describe('Summary Action Bar', () => {
   function runCollapsedBarTest(): void {
     it('should match previous collapsed summary action bar screenshot', async (done) => {
       await element(by.css(
-        '#summary-action-bar .sky-summary-action-bar-details-collapse .sky-btn'
+        '#summary-action-bar .sky-chevron'
       )).click();
       expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
         screenshotName: getScreenshotName('summary-action-bar-collapsed')
@@ -94,7 +94,7 @@ describe('Summary Action Bar', () => {
     it('should match previous collapsed summary action bar modal screenshot', async (done) => {
       await element(by.css('#modal-trigger')).click();
       await element(by.css(
-        '.sky-modal .sky-summary-action-bar-details-collapse .sky-btn'
+        '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
       )).click();
       expect('.sky-modal').toMatchBaselineScreenshot(done, {
         screenshotName: getScreenshotName('summary-action-bar-modal-collapsed')
@@ -107,7 +107,7 @@ describe('Summary Action Bar', () => {
     it('should match previous collapsed summary action bar full screen modal screenshot', async (done) => {
       await element(by.css('#full-modal-trigger')).click();
       await element(by.css(
-        '.sky-modal .sky-summary-action-bar-details-collapse .sky-btn'
+        '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
       )).click();
       expect('.sky-modal').toMatchBaselineScreenshot(done, {
         screenshotName: getScreenshotName('summary-action-bar-full-modal-collapsed')
