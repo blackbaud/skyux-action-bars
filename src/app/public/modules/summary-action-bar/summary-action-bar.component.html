@@ -32,56 +32,34 @@
         <div *ngIf="isSummaryCollapsible && !isSummaryCollapsed"
           class="sky-summary-action-bar-details-collapse"
         >
-          <button
-            class="sky-btn"
-            type="button"
+          <sky-chevron
             [attr.title]="'skyux_summary_action_bar_hide_summary' | skyLibResources"
             [attr.aria-controls]="summaryId"
             [attr.aria-expanded]="true"
+            [direction]="isSummaryCollapsed ? 'up' : 'down'"
             [skyThemeClass]="{
-              'sky-btn-secondary' : 'default',
-              'sky-btn-default sky-btn-icon': 'modern'
+              'sky-margin-inline-default' : 'modern'
             }"
-            (click)="hideSummarySection()"
+            (directionChange)="onDirectionChange($event)"
           >
-            <sky-icon *skyThemeIf="'default'"
-              icon="chevron-down"
-            >
-            </sky-icon>
-            <sky-icon *skyThemeIf="'modern'"
-              icon="chevron-down"
-              iconType="skyux"
-            >
-            </sky-icon>
-          </button>
+          </sky-chevron>
         </div>
       </div>
     </div>
     <div *ngIf="isSummaryCollapsible && isSummaryCollapsed"
       class="sky-summary-action-bar-details-expand"
     >
-      <button
-        class="sky-btn"
-        type="button"
+      <sky-chevron
         [attr.title]="'skyux_summary_action_bar_show_summary' | skyLibResources"
         [attr.aria-controls]="summaryId"
         [attr.aria-expanded]="false"
+        [direction]="isSummaryCollapsed ? 'up' : 'down'"
         [skyThemeClass]="{
-          'sky-btn-secondary' : 'default',
-          'sky-btn-default sky-btn-icon': 'modern'
+          'sky-margin-inline-default' : 'modern'
         }"
-        (click)="showSummarySection()"
-        >
-        <sky-icon *skyThemeIf="'default'"
-          icon="chevron-up"
-        >
-        </sky-icon>
-        <sky-icon *skyThemeIf="'modern'"
-          icon="chevron-up"
-          iconType="skyux"
-        >
-        </sky-icon>
-      </button>
+        (directionChange)="onDirectionChange($event)"
+      >
+      </sky-chevron>
     </div>
   </ng-container>
 </div>

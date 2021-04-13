@@ -89,4 +89,31 @@ describe('Summary Action Bar in tabset', () => {
       runTests();
     });
   });
+
+  describe('(size: xs)', () => {
+    beforeEach(async() => {
+      currentTheme = undefined;
+      currentThemeMode = undefined;
+      await SkyHostBrowser.get('visual/tab-summary-action-bar');
+      await setBrowserSize('xs');
+    });
+
+    runTests();
+
+    describe('when modern theme', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'light');
+      });
+
+      runTests();
+    });
+
+    describe('when modern theme in dark mode', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'dark');
+      });
+
+      runTests();
+    });
+  });
 });
