@@ -102,6 +102,12 @@
       padding: $sky-theme-modern-padding-even-lg;
     }
   }
+
+  .sky-summary-action-bar-summary-items {
+    ::ng-deep sky-key-info {
+      margin: $sky-theme-modern-padding-even-lg;
+    }
+  }
 }
 
 @include sky-theme-modern-dark {
