@@ -104,8 +104,15 @@
   }
 
   .sky-summary-action-bar-summary-items {
+    margin-bottom: -$sky-theme-modern-margin-inline-sm;
+
     ::ng-deep sky-key-info {
-      margin: $sky-theme-modern-padding-even-lg;
+      margin: 0 $sky-theme-modern-margin-inline-xl $sky-theme-modern-margin-inline-sm 0;
+      display: inline-block;
+    }
+
+    ::ng-deep sky-key-info:last-child {
+      margin: 0 0 $sky-theme-modern-margin-inline-sm 0;
     }
   }
 }
