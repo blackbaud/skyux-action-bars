@@ -1,117 +1,192 @@
 import {
+  SkyHostBrowserBreakpoint
+} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
+
+import {
   expect,
-  SkyHostBrowser
+  SkyHostBrowser,
+  SkyVisualThemeSelector
 } from '@skyux-sdk/e2e';
 
 import {
-  element,
-  by
+  by,
+  element
 } from 'protractor';
 
 describe('Summary Action Bar', () => {
-  it('should match previous summary action bar screenshot', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
-    expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar'
+
+  let browserSize: SkyHostBrowserBreakpoint;
+  let currentTheme: string;
+  let currentThemeMode: string;
+
+  async function selectTheme(theme: string, mode: string): Promise<void> {
+    currentTheme = theme;
+    currentThemeMode = mode;
+
+    return SkyVisualThemeSelector.selectTheme(theme, mode);
+  }
+
+  async function setBrowserSize(size: SkyHostBrowserBreakpoint): Promise<void> {
+    browserSize = size;
+
+    return SkyHostBrowser.setWindowBreakpoint(size);
+  }
+
+  function getScreenshotName(name: string): string {
+    if (browserSize) {
+      name += '-' + browserSize;
+    }
+
+    if (currentTheme) {
+      name += '-' + currentTheme;
+    }
+
+    if (currentThemeMode) {
+      name += '-' + currentThemeMode;
+    }
+
+    return name;
+  }
+
+  // LG and XS
+  function runBasicTest(): void {
+    it('should match previous summary action bar screenshot', async (done) => {
+      expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('summary-action-bar')
+      });
+    });
+  }
+
+  // LG and XS
+  function runModalTest(): void {
+    it('should match previous summary action bar modal screenshot', async (done) => {
+      await element(by.css('#modal-trigger')).click();
+      expect('.sky-modal').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('summary-action-bar-modal')
+      });
+    });
+  }
+
+  // LG and XS
+  function runFullModalTest(): void {
+    it('should match previous summary action bar full screen modal screenshot', async (done) => {
+      await element(by.css('#full-modal-trigger')).click();
+      expect('.sky-modal').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('summary-action-bar-full-modal')
+      });
+    });
+  }
+
+  // XS ONLY
+  function runCollapsedBarTest(): void {
+    it('should match previous collapsed summary action bar screenshot', async (done) => {
+      await element(by.css(
+        '#summary-action-bar .sky-chevron'
+      )).click();
+      expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('summary-action-bar-collapsed')
+      });
+    });
+  }
+
+  // XS ONLY
+  function runCollapsedBarModalTest(): void {
+    it('should match previous collapsed summary action bar modal screenshot', async (done) => {
+      await element(by.css('#modal-trigger')).click();
+      await element(by.css(
+        '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
+      )).click();
+      expect('.sky-modal').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('summary-action-bar-modal-collapsed')
+      });
+    });
+  }
+
+  // XS ONLY
+  function runCollapsedBarFullModalTest(): void {
+    it('should match previous collapsed summary action bar full screen modal screenshot', async (done) => {
+      await element(by.css('#full-modal-trigger')).click();
+      await element(by.css(
+        '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
+      )).click();
+      expect('.sky-modal').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('summary-action-bar-full-modal-collapsed')
+      });
+    });
+  }
+
+  describe('(size: lg)', () => {
+    beforeEach( async() => {
+      currentTheme = undefined;
+      currentThemeMode = undefined;
+      await SkyHostBrowser.get('visual/summary-action-bar');
+      await setBrowserSize('lg');
+    });
+
+    runBasicTest();
+    runModalTest();
+    runFullModalTest();
+
+    describe('when modern theme', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'light');
+      });
+
+      runBasicTest();
+      runModalTest();
+      runFullModalTest();
+    });
+
+    describe('when modern theme in dark mode', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'dark');
+      });
+
+      runBasicTest();
+      runModalTest();
+      runFullModalTest();
     });
   });
 
-  it('should match previous expanded summary action bar screenshot (screen: xs)', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-expanded'
+  describe('(size: xs)', () => {
+    beforeEach(async() => {
+      currentTheme = undefined;
+      currentThemeMode = undefined;
+      await SkyHostBrowser.get('visual/summary-action-bar');
+      await setBrowserSize('xs');
     });
-  });
 
-  it('should match previous collapsed summary action bar screenshot (screen: xs)', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('#summary-action-bar .sky-summary-action-bar-details-collapse .sky-btn-secondary')).click();
-    expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-collapsed'
+    runBasicTest();
+    runModalTest();
+    runFullModalTest();
+    runCollapsedBarTest();
+    runCollapsedBarModalTest();
+    runCollapsedBarFullModalTest();
+
+    describe('when modern theme', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'light');
+      });
+
+      runBasicTest();
+      runModalTest();
+      runFullModalTest();
+      runCollapsedBarTest();
+      runCollapsedBarModalTest();
+      runCollapsedBarFullModalTest();
     });
-  });
 
-  it('should match previous summary action bar modal screenshot', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
-    element(by.css('#modal-trigger')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-modal'
-    });
-  });
+    describe('when modern theme in dark mode', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'dark');
+      });
 
-  it('should match previous expanded summary action bar modal screenshot (screen: xs)', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    element(by.css('#modal-trigger')).click();
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-modal-expanded'
-    });
-  });
-
-  it('should match previous collapsed summary action bar modal screenshot (screen: xs)', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    element(by.css('#modal-trigger')).click();
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('.sky-modal .sky-summary-action-bar-details-collapse .sky-btn-secondary')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-modal-collapsed'
-    });
-  });
-
-  it('should match previous summary action bar full screen modal screenshot', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
-    element(by.css('#full-modal-trigger')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-full-modal'
-    });
-  });
-
-  it('should match previous expanded summary action bar modal full screen screenshot (screen: xs)', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    element(by.css('#full-modal-trigger')).click();
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-full-modal-expanded'
-    });
-  });
-
-  it('should match previous collapsed summary action bar full screen modal screenshot (screen: xs)', (done) => {
-    SkyHostBrowser.get('visual/summary-action-bar');
-    element(by.css('#full-modal-trigger')).click();
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('.sky-modal .sky-summary-action-bar-details-collapse .sky-btn-secondary')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-full-modal-collapsed'
-    });
-  });
-
-  it('should match previous tab without summary action bar screenshot', (done) => {
-    SkyHostBrowser.get('visual/tab-summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
-    expect('#screenshot-tabset').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-tab-empty'
-    });
-  });
-
-  it('should match previous tab with a summary action bar screenshot', (done) => {
-    SkyHostBrowser.get('visual/tab-summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
-    element(by.css('#sky-tab-1-nav-btn')).click();
-    expect('#screenshot-tabset').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-tab'
-    });
-  });
-
-  it('should match previous split view with a summary action bar screenshot', (done) => {
-    SkyHostBrowser.get('visual/split-view-summary-action-bar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
-    expect('#screenshot-split-view').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-action-bar-split-view'
+      runBasicTest();
+      runModalTest();
+      runFullModalTest();
+      runCollapsedBarTest();
+      runCollapsedBarModalTest();
+      runCollapsedBarFullModalTest();
     });
   });
 });
