@@ -1,32 +1,36 @@
-<sky-modal>
-  <sky-modal-header>
-    Summary Action Bar In Modal
-  </sky-modal-header>
-  <sky-modal-content>
-    Content A
-  </sky-modal-content>
-  <sky-modal-footer>
+<sky-tabset
+  [active]="0"
+>
+  <sky-tab
+    tabHeading="Tab 1"
+  >
+    Tab without summary action bar.
+  </sky-tab>
+  <sky-tab
+    tabHeading="Tab 2"
+  >
+    Tab with summary action bar.
     <sky-summary-action-bar>
       <sky-summary-action-bar-actions>
         <sky-summary-action-bar-primary-action
-          (actionClick)="instance.save()"
+          (actionClick)="onPrimaryActionClick()"
         >
-          Save
+          Primary action
         </sky-summary-action-bar-primary-action>
         <sky-summary-action-bar-secondary-actions>
           <sky-summary-action-bar-secondary-action
-            (actionClick)="printHello()"
+            (actionClick)="onSecondaryActionClick()"
           >
             Secondary action
           </sky-summary-action-bar-secondary-action>
           <sky-summary-action-bar-secondary-action
-            (actionClick)="printHello()"
+            (actionClick)="onSecondaryAction2Click()"
           >
             Secondary action 2
           </sky-summary-action-bar-secondary-action>
         </sky-summary-action-bar-secondary-actions>
         <sky-summary-action-bar-cancel
-          (actionClick)="instance.cancel()"
+          (actionClick)="onCancelClick()"
         >
           Cancel
         </sky-summary-action-bar-cancel>
@@ -72,5 +76,5 @@
         </div>
       </sky-summary-action-bar-summary>
     </sky-summary-action-bar>
-  </sky-modal-footer>
-</sky-modal>
+  </sky-tab>
+</sky-tabset>

@@ -49,7 +49,7 @@
     "@skyux-sdk/builder-plugin-skyux": "4.1.4",
     "@skyux-sdk/e2e": "4.0.1",
     "@skyux-sdk/testing": "4.2.3",
-    "@skyux/action-bars": "4.1.0",
+    "@skyux/action-bars": "4.2.0",
     "@skyux/animations": "4.0.1",
     "@skyux/assets": "4.0.1",
     "@skyux/config": "4.4.0",
