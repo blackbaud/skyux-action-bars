@@ -20,8 +20,8 @@ export class SummaryActionBarDocsComponent {
     private modalService: SkyModalService
   ) {}
 
-  public openModal() {
-    this.modalService.open(SummaryActionBarModalDocsComponent, { fullPage: true });
+  public openModal(): void {
+    this.modalService.open(SummaryActionBarModalDocsComponent, { size: 'large' });
   }
 
 }

@@ -25,8 +25,8 @@ export class SummaryActionBarDemoComponent {
     private modalService: SkyModalService
   ) {}
 
-  public openModal() {
-    this.modalService.open(SkySummaryActionBarModalDemoComponent, { fullPage: true });
+  public openModal(): void {
+    this.modalService.open(SkySummaryActionBarModalDemoComponent, { size: 'large' });
   }
 
 }

@@ -1,6 +1,6 @@
 <sky-modal>
   <sky-modal-header>
-    Summary action bar in a modal
+    Modal with summary action bar
   </sky-modal-header>
   <sky-modal-content>
     Hello world!
@@ -21,7 +21,9 @@
             Secondary action 2
           </sky-summary-action-bar-secondary-action>
         </sky-summary-action-bar-secondary-actions>
-        <sky-summary-action-bar-cancel>
+        <sky-summary-action-bar-cancel
+          (actionClick)="instance.close()"
+        >
           Cancel
         </sky-summary-action-bar-cancel>
       </sky-summary-action-bar-actions>
