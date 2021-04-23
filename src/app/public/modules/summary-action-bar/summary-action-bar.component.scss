@@ -46,6 +46,10 @@
   flex-wrap: wrap;
   flex-grow: 1;
 	margin-right: $sky-margin;
+
+  ::ng-deep sky-key-info {
+    margin: 0 $sky-margin-double 0 0;
+  }
 }
 
 .sky-summary-action-bar-details-expand {
