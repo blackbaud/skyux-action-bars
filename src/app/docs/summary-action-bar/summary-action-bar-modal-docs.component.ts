@@ -8,8 +8,7 @@ import {
 
 @Component({
   selector: 'sky-test-cmp-modal',
-  templateUrl: './summary-action-bar-modal-docs.component.html',
-  styleUrls: ['./summary-action-bar-modal-docs.component.scss']
+  templateUrl: './summary-action-bar-modal-docs.component.html'
 })
 export class SummaryActionBarModalDocsComponent {
 
