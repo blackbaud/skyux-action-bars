@@ -5,11 +5,9 @@ import {
 @Component({
   selector: 'app-summary-action-bar-demo',
   templateUrl: './summary-action-bar-demo.component.html',
-  styles: [`
-    sky-key-info {
-      margin-right: 20px;
-    }
-  `]
+  styleUrls: [
+    './summary-action-bar-demo.component.scss'
+  ]
 })
 export class SummaryActionBarDemoComponent {
 

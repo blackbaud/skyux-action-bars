@@ -9,11 +9,9 @@ import {
 @Component({
   selector: 'sky-test-cmp-modal',
   templateUrl: './summary-action-bar-modal-demo.component.html',
-  styles: [`
-    sky-key-info {
-      margin-right: 20px;
-    }
-  `]
+  styleUrls: [
+    './summary-action-bar-modal-demo.component.scss'
+  ]
 })
 export class SkySummaryActionBarModalDemoComponent {
 
