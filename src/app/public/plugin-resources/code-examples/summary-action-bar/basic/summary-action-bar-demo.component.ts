@@ -11,10 +11,6 @@ import {
 })
 export class SummaryActionBarDemoComponent {
 
-  public onCancelClick(): void {
-    console.log('Cancel button clicked.');
-  }
-
   public onPrimaryActionClick(): void {
     console.log('Primary action button clicked.');
   }
