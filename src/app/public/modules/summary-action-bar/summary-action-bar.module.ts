@@ -7,10 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  BrowserAnimationsModule
-} from '@angular/platform-browser/animations';
-
-import {
   MutationObserverService,
   SkyMediaQueryModule
 } from '@skyux/core';
@@ -79,7 +75,6 @@ import {
     SkySummaryActionBarSummaryComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     SkyChevronModule,
     SkyDropdownModule,

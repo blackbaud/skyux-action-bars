@@ -1,3 +1,7 @@
+# 5.0.0-alpha.0 (2021-05-21)
+
+- Removed `BrowserAnimationsModule` from the `imports` section of `SkySummaryActionBarModule` to support lazy-loading. Consumers of `SkySummaryActionBarModule` must now import `BrowserAnimationsModule` into their application's root module. [#54](https://github.com/blackbaud/skyux-action-bars/pull/54)
+
 # 4.2.0 (2021-04-19)
 
 - Added modern theme styles to the summary action bar component. [#49](https://github.com/blackbaud/skyux-action-bars/pull/49)
