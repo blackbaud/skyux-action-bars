@@ -61,6 +61,9 @@ let nextId = 0;
   templateUrl: './summary-action-bar.component.html',
   styleUrls: ['./summary-action-bar.component.scss'],
   animations: [skyAnimationSlide],
+  providers: [
+    SkySummaryActionBarAdapterService
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
