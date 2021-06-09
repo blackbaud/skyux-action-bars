@@ -60,10 +60,6 @@ import {
   SkySummaryActionBarSummaryComponent
 } from './summary/summary-action-bar-summary.component';
 
-import {
-  SkySummaryActionBarAdapterService
-} from './summary-action-bar-adapter.service';
-
 @NgModule({
   declarations: [
     SkySummaryActionBarActionsComponent,
@@ -85,8 +81,7 @@ import {
     SkyThemeModule
   ],
   providers: [
-    MutationObserverService,
-    SkySummaryActionBarAdapterService
+    MutationObserverService
   ],
   exports: [
     SkySummaryActionBarComponent,

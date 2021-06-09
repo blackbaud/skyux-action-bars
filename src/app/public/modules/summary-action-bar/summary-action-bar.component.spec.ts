@@ -87,6 +87,7 @@ describe('Summary Action Bar component', () => {
       .overrideComponent(SkySummaryActionBarComponent, {
         add: {
           providers: [
+            SkySummaryActionBarAdapterService,
             {
               provide: SkyMediaQueryService,
               useValue: mockMediaQueryService
@@ -152,14 +153,17 @@ describe('Summary Action Bar component', () => {
       }));
 
       it('should set a new margin on the body if the window is resized', () => {
-        let adapter: SkySummaryActionBarAdapterService = TestBed.get(SkySummaryActionBarAdapterService);
-        spyOn(adapter, 'styleBodyElementForActionBar').and.stub();
+        const initialBottomMargin = document.body.style.marginBottom;
+        expect(initialBottomMargin).toEqual('');
+
         fixture.detectChanges();
         let resizeEvent: any = document.createEvent('CustomEvent');
         resizeEvent.initEvent('resize', true, true);
         window.dispatchEvent(resizeEvent);
         fixture.detectChanges();
-        expect(adapter.styleBodyElementForActionBar).toHaveBeenCalledTimes(2);
+
+        const finalBottomMargin = document.body.style.marginBottom;
+        expect(initialBottomMargin).not.toEqual(finalBottomMargin);
       });
 
       it('should remove the margin on the body if the action bar is destroyed', () => {
