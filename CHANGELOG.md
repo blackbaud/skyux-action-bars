@@ -1,6 +1,6 @@
 # 4.2.1 (2021-06-11)
 
-- Fixed the module name in the installation documentatoin. [#57](https://github.com/blackbaud/skyux-action-bars/pull/57)
+- Fixed the module name in the installation documentation. [#57](https://github.com/blackbaud/skyux-action-bars/pull/57)
 
 # 4.2.0 (2021-04-19)
 
