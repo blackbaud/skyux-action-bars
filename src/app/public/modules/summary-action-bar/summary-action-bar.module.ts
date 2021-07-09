@@ -7,11 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  MutationObserverService,
-  SkyMediaQueryModule
-} from '@skyux/core';
-
-import {
   SkyI18nModule
 } from '@skyux/i18n';
 
@@ -77,11 +72,7 @@ import {
     SkyI18nModule,
     SkyIconModule,
     SkyActionBarsResourcesModule,
-    SkyMediaQueryModule,
     SkyThemeModule
-  ],
-  providers: [
-    MutationObserverService
   ],
   exports: [
     SkySummaryActionBarComponent,

@@ -37,6 +37,10 @@ import {
 } from './docs/summary-action-bar/summary-action-bar-modal-docs.component';
 
 import {
+  SkyActionBarsForRootCompatModule
+} from './public/modules/shared/action-bars-for-root-compat.module';
+
+import {
   SkySummaryActionBarModalDemoComponent
 } from './visual/summary-action-bar/summary-action-bar-modal-demo.component';
 
@@ -45,6 +49,9 @@ import {
 } from './public/public_api';
 
 @NgModule({
+  imports: [
+    SkyActionBarsForRootCompatModule
+  ],
   exports: [
     SkyAppLinkModule,
     SkyConfirmModule,
