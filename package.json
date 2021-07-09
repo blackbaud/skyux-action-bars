@@ -1,6 +1,6 @@
 {
   "name": "@skyux/action-bars",
-  "version": "5.0.0-alpha.0",
+  "version": "5.0.0-beta.0",
   "description": "SKY UX Action Bars",
   "scripts": {
     "build": "skyux build-public-library",
@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/blackbaud/skyux-action-bars#readme",
   "peerDependencies": {
-    "@angular/common": "^9.1.9 | ^12",
-    "@angular/core": "^9.1.9 | ^12",
-    "@skyux/animations": "^4.0.0",
-    "@skyux/core": "^4.1.0",
-    "@skyux/i18n": "^4.0.0",
-    "@skyux/indicators": "^5.0.0-alpha.0",
-    "@skyux/popovers": "^5.0.0-alpha.0"
+    "@angular/common": "^9.1.9 || ^12",
+    "@angular/core": "^9.1.9 || ^12",
+    "@skyux/animations": "^5.0.0-beta.0",
+    "@skyux/core": "^5.0.0-beta.0",
+    "@skyux/i18n": "^5.0.0-beta.0",
+    "@skyux/indicators": "^5.0.0-beta.0",
+    "@skyux/popovers": "^5.0.0-beta.0"
   },
   "dependencies": {},
   "devDependencies": {

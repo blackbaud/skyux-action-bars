@@ -1,3 +1,7 @@
+# 4.2.1 (2021-06-11)
+
+- Fixed the module name in the installation documentation. [#57](https://github.com/blackbaud/skyux-action-bars/pull/57)
+
 # 5.0.0-alpha.0 (2021-05-21)
 
 - Removed `BrowserAnimationsModule` from the `imports` section of `SkySummaryActionBarModule` to support lazy-loading. Consumers of `SkySummaryActionBarModule` must now import `BrowserAnimationsModule` into their application's root module. [#54](https://github.com/blackbaud/skyux-action-bars/pull/54)
