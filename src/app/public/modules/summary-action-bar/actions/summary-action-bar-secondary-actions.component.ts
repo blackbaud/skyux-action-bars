@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import {
+  Subject,
   Subscription
 } from 'rxjs';
 
@@ -16,6 +17,11 @@ import {
   SkyMediaBreakpoints,
   SkyMediaQueryService
 } from '@skyux/core';
+
+import {
+  SkyDropdownMessage,
+  SkyDropdownMessageType
+} from '@skyux/popovers';
 
 import {
   SkySummaryActionBarSecondaryActionComponent
@@ -36,6 +42,8 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
   public secondaryActionComponents: QueryList<SkySummaryActionBarSecondaryActionComponent>;
 
   public isMobile = false;
+
+  public dropdownMessageStream = new Subject<SkyDropdownMessage>();
 
   private mediaQuerySubscription: Subscription;
   private actionChanges: Subscription;
@@ -74,6 +82,9 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
       }
       this.secondaryActionComponents.forEach(action => {
         action.isDropdown = isDropdown;
+        action.actionClick.subscribe(() => {
+          this.dropdownMessageStream.next({ type: SkyDropdownMessageType.Close });
+        });
       });
     }
     this.changeDetector.detectChanges();
