@@ -47,6 +47,7 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
 
   private mediaQuerySubscription: Subscription;
   private actionChanges: Subscription;
+  private actionClicks: Subscription[] = [];
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -71,6 +72,7 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
   public ngOnDestroy(): void {
     this.mediaQuerySubscription.unsubscribe();
     this.actionChanges.unsubscribe();
+    this.actionClicks.forEach((actionClick) => actionClick.unsubscribe());
   }
 
   private checkAndUpdateChildrenType() {
@@ -82,9 +84,9 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
       }
       this.secondaryActionComponents.forEach(action => {
         action.isDropdown = isDropdown;
-        action.actionClick.subscribe(() => {
+        this.actionClicks.push(action.actionClick.subscribe(() => {
           this.dropdownMessageStream.next({ type: SkyDropdownMessageType.Close });
-        });
+        }));
       });
     }
     this.changeDetector.detectChanges();
