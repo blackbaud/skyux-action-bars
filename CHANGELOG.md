@@ -1,3 +1,11 @@
+# 5.0.0-beta.1 (2021-08-06)
+
+- Added bug fixes and features from the master branch. [#62](https://github.com/blackbaud/skyux-action-bars/pull/62)
+
+# 4.2.2 (2021-08-05)
+
+- Fixed the secondary action dropdown menu to collapse when clicking an action. [#60](https://github.com/blackbaud/skyux-action-bars/pull/60)
+
 # 5.0.0-beta.0 (2021-07-09)
 
 - Initial beta release.
