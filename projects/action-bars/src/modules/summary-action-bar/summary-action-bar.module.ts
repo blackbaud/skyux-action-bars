@@ -25,7 +25,7 @@ import {
 
 import {
   SkyActionBarsResourcesModule
-} from '../shared/action-bars-resources.module';
+} from '../shared/sky-action-bars-resources.module';
 
 import {
   SkySummaryActionBarComponent
