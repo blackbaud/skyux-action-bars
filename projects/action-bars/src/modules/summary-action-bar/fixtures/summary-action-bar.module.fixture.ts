@@ -31,10 +31,6 @@ import {
 } from '@skyux/tabs';
 
 import {
-  SkyActionBarsForRootCompatModule
-} from '../../shared/action-bars-for-root-compat.module';
-
-import {
   SkySummaryActionBarModalTestComponent
 } from './summary-action-bar-modal.component.fixture';
 
@@ -73,7 +69,6 @@ import {
     SkyModalModule,
     SkyTabsModule,
     SkySplitViewModule,
-    SkyActionBarsForRootCompatModule,
     SkySummaryActionBarModule
   ],
   exports: [
