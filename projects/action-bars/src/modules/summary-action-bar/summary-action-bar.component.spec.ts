@@ -145,8 +145,6 @@ describe('Summary Action Bar component', () => {
         expect(document.body.style.marginBottom).toBe(actionBarHeight + 'px');
         debugElement.query(By.css('.sky-summary-action-bar-details-collapse button'))
           .nativeElement.click();
-        fixture.detectChanges();
-        tick();
         actionBarHeight = debugElement.query(By.css('.sky-summary-action-bar'))
           .nativeElement.offsetHeight;
         expect(document.body.style.marginBottom).toBe(actionBarHeight + 'px');
@@ -154,8 +152,6 @@ describe('Summary Action Bar component', () => {
 
       it('should set a new margin on the body if the window is resized', () => {
         const initialBottomMargin = document.body.style.marginBottom;
-        expect(initialBottomMargin).toEqual('');
-
         fixture.detectChanges();
         let resizeEvent: any = document.createEvent('CustomEvent');
         resizeEvent.initEvent('resize', true, true);

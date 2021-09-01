@@ -184,6 +184,7 @@ export class SkySummaryActionBarComponent implements AfterViewInit, OnDestroy {
   }
 
   private setupTabListener(): void {
+    /* istanbul ignore else */
     if (!this.observer) {
       this.observer = this.observerService.create((mutations: MutationRecord[]) => {
         if ((<HTMLElement>mutations[0].target).attributes.getNamedItem('hidden')) {
