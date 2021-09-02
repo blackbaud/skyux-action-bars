@@ -1,3 +1,7 @@
+# 5.0.0-beta.2 (2021-09-02)
+
+- Migrated to Angular CLI. [#63](https://github.com/blackbaud/skyux-action-bars/pull/63)
+
 # 5.0.0-beta.1 (2021-08-06)
 
 - Added bug fixes and features from the master branch. [#62](https://github.com/blackbaud/skyux-action-bars/pull/62)
