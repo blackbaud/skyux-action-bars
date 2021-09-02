@@ -1,0 +1,207 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "action-bars": {
+      "projectType": "library",
+      "root": "projects/action-bars",
+      "sourceRoot": "projects/action-bars/src",
+      "prefix": "sky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/action-bars/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/action-bars/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/action-bars/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/action-bars/src/test.ts",
+            "tsConfig": "projects/action-bars/tsconfig.spec.json",
+            "karmaConfig": "projects/action-bars/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/fixtures/**"
+            ],
+            "styles": [
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/action-bars/**/*.ts",
+              "projects/action-bars/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "action-bars-showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/action-bars-showcase",
+      "sourceRoot": "projects/action-bars-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/action-bars-showcase",
+            "index": "projects/action-bars-showcase/src/index.html",
+            "main": "projects/action-bars-showcase/src/main.ts",
+            "polyfills": "projects/action-bars-showcase/src/polyfills.ts",
+            "tsConfig": "projects/action-bars-showcase/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/action-bars-showcase/src/favicon.ico",
+              "projects/action-bars-showcase/src/assets"
+            ],
+            "styles": [
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "projects/action-bars-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/action-bars-showcase/src/environments/environment.ts",
+                  "with": "projects/action-bars-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "action-bars-showcase:build:production"
+            },
+            "development": {
+              "browserTarget": "action-bars-showcase:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "action-bars-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/action-bars-showcase/src/test.ts",
+            "polyfills": "projects/action-bars-showcase/src/polyfills.ts",
+            "tsConfig": "projects/action-bars-showcase/tsconfig.spec.json",
+            "karmaConfig": "projects/action-bars-showcase/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/action-bars-showcase/src/favicon.ico",
+              "projects/action-bars-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/action-bars-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/action-bars-showcase/**/*.ts",
+              "projects/action-bars-showcase/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/action-bars-showcase/e2e/protractor.conf.js"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "action-bars-showcase:serve:production"
+            },
+            "development": {
+              "devServerTarget": "action-bars-showcase:serve:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  },
+  "defaultProject": "action-bars",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}
