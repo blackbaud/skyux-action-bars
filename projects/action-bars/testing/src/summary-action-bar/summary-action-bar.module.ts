@@ -8,7 +8,7 @@ import {
 
 import {
   SkySummaryActionBarModule
-} from '@skyux/action-bars';
+} from '../../../src/modules/summary-action-bar/summary-action-bar.module';
 
 @NgModule({
   exports: [

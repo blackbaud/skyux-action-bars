@@ -57,9 +57,9 @@ import {
 
 @NgModule({
   declarations: [
+    SkySummaryActionBarComponent,
     SkySummaryActionBarActionsComponent,
     SkySummaryActionBarCancelComponent,
-    SkySummaryActionBarComponent,
     SkySummaryActionBarPrimaryActionComponent,
     SkySummaryActionBarSecondaryActionComponent,
     SkySummaryActionBarSecondaryActionsComponent,
@@ -67,11 +67,11 @@ import {
   ],
   imports: [
     CommonModule,
+    SkyActionBarsResourcesModule,
     SkyChevronModule,
     SkyDropdownModule,
     SkyI18nModule,
     SkyIconModule,
-    SkyActionBarsResourcesModule,
     SkyThemeModule
   ],
   exports: [
