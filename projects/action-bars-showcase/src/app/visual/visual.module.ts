@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
+import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
 
 
@@ -30,6 +31,7 @@ import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
     NoopAnimationsModule,
     RouterModule,
     SkyConfirmModule,
+    SkyE2eThemeSelectorModule,
     SkyKeyInfoModule,
     SkyModalModule,
     SkySummaryActionBarModule,

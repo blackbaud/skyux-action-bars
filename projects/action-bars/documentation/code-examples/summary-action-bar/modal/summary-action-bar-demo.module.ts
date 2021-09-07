@@ -6,9 +6,7 @@ import {
   NgModule
 } from '@angular/core';
 
-import {
-  SkySummaryActionBarModule
-} from '../../../../src/modules/summary-action-bar/summary-action-bar.module';
+import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
 
 import {
   SkyKeyInfoModule
