@@ -10,7 +10,6 @@ import {
   SkySummaryActionBarModule
 } from '@skyux/action-bars';
 
-
 @NgModule({
   exports: [
     SkySummaryActionBarModule,
