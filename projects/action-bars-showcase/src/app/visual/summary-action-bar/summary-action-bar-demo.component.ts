@@ -8,8 +8,7 @@ import {
 } from '@skyux/modals';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
+  SkyThemeService
 } from '@skyux/theme';
 
 import {
@@ -25,7 +24,7 @@ import {
 } from './summary-action-bar-modal-demo.component';
 
 @Component({
-  selector: 'sky-summary-action-bar-demo',
+  selector: 'app-summary-action-bar-demo',
   templateUrl: './summary-action-bar-demo.component.html',
   styleUrls: ['./summary-action-bar-demo.component.scss']
 })
@@ -67,9 +66,5 @@ export class SkySummaryActionBarDemoComponent implements OnDestroy {
 
   public openFullScreenModal() {
     this.modalService.open(SkySummaryActionBarModalDemoComponent, { fullPage: true });
-  }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
   }
 }

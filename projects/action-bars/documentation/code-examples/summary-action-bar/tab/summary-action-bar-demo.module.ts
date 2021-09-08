@@ -3,16 +3,13 @@ import {
 } from '@angular/core';
 
 import {
-  SkySummaryActionBarModule
-} from '@skyux/action-bars';
-
-import {
   SkyKeyInfoModule
 } from '@skyux/indicators';
 
 import {
   SkyTabsModule
 } from '@skyux/tabs';
+import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
 
 import {
   SummaryActionBarDemoComponent

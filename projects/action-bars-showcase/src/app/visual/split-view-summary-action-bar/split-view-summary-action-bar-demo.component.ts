@@ -18,13 +18,8 @@ import {
   SkySplitViewMessageType
 } from '@skyux/split-view';
 
-import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
 @Component({
-  selector: 'split-view-summary-action-bar-demo',
+  selector: 'app-split-view-summary-action-bar-demo',
   templateUrl: './split-view-summary-action-bar-demo.component.html',
   styleUrls: ['./split-view-summary-action-bar-demo.component.scss']
 })
@@ -61,8 +56,7 @@ export class SplitViewSummaryActionBarVisualComponent {
 
   constructor(
     public changeDetectorRef: ChangeDetectorRef,
-    public confirmService: SkyConfirmService,
-    private themeSvc: SkyThemeService
+    public confirmService: SkyConfirmService
   ) {
     this.activeIndex = 0;
   }
@@ -86,10 +80,6 @@ export class SplitViewSummaryActionBarVisualComponent {
 
   public printHello() {
     console.log('hello');
-  }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
   }
 
   private setFocusInWorkspace(): void {

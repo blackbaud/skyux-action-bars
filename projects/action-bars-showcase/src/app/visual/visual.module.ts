@@ -9,11 +9,11 @@ import { SkyConfirmModule, SkyModalModule } from '@skyux/modals';
 import { SkyKeyInfoModule } from '@skyux/indicators';
 import { SkyTabsModule } from '@skyux/tabs';
 import { SkySplitViewModule } from '@skyux/split-view';
-import {SkyDocsToolsModule} from '@skyux/docs-tools';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
+import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
 
 
@@ -31,7 +31,7 @@ import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
     NoopAnimationsModule,
     RouterModule,
     SkyConfirmModule,
-    SkyDocsToolsModule,
+    SkyE2eThemeSelectorModule,
     SkyKeyInfoModule,
     SkyModalModule,
     SkySummaryActionBarModule,
