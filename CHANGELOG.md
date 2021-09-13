@@ -1,6 +1,6 @@
 # 5.0.0-beta.4 (2021-09-13)
 
-- Updated peer dependencies. [#65](https://github.com/blackbaud/skyux-action-bars/pull/65)
+- Updated peer dependencies. [#67](https://github.com/blackbaud/skyux-action-bars/pull/67)
 
 # 5.0.0-beta.3 (2021-09-08)
 
