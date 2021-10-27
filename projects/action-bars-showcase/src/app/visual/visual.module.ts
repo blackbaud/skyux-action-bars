@@ -15,15 +15,13 @@ import { RouterModule } from '@angular/router';
 import { SkySummaryActionBarModule } from 'projects/action-bars/src/public-api';
 import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
-
-
 @NgModule({
   declarations: [
     SplitViewSummaryActionBarVisualComponent,
     SkySummaryActionBarDemoComponent,
     SkySummaryActionBarModalDemoComponent,
     SkyTabSummaryActionBarDemoComponent,
-    VisualComponent
+    VisualComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +34,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     SkyModalModule,
     SkySummaryActionBarModule,
     SkyTabsModule,
-    SkySplitViewModule
-  ]
+    SkySplitViewModule,
+  ],
 })
-export class VisualModule { }
+export class VisualModule {}

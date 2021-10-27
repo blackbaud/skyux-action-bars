@@ -8,24 +8,24 @@ import { VisualComponent } from './visual/visual.component';
 const routes: Routes = [
   {
     path: '',
-    component: VisualComponent
+    component: VisualComponent,
   },
   {
     path: 'visual/summary-action-bar',
-    component: SkySummaryActionBarDemoComponent
+    component: SkySummaryActionBarDemoComponent,
   },
   {
     path: 'visual/tab-summary-action-bar',
-    component: SkyTabSummaryActionBarDemoComponent
+    component: SkyTabSummaryActionBarDemoComponent,
   },
   {
     path: 'visual/split-view-summary-action-bar',
-    component: SplitViewSummaryActionBarVisualComponent
-  }
+    component: SplitViewSummaryActionBarVisualComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
