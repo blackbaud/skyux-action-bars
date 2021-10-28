@@ -1,30 +1,24 @@
-import {
-  Component,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 
 import {
   SkyConfirmCloseEventArgs,
   SkyConfirmService,
-  SkyConfirmType
+  SkyConfirmType,
 } from '@skyux/modals';
 
-import {
-  Subject
-} from 'rxjs';
+import { Subject } from 'rxjs';
 
 import {
   SkySplitViewMessage,
-  SkySplitViewMessageType
+  SkySplitViewMessageType,
 } from '@skyux/split-view';
 
 @Component({
   selector: 'app-split-view-summary-action-bar-demo',
   templateUrl: './split-view-summary-action-bar-demo.component.html',
-  styleUrls: ['./split-view-summary-action-bar-demo.component.scss']
+  styleUrls: ['./split-view-summary-action-bar-demo.component.scss'],
 })
 export class SplitViewSummaryActionBarVisualComponent {
-
   public set activeIndex(value: number) {
     this._activeIndex = value;
     this.activeRecord = this.items[this._activeIndex];
@@ -42,10 +36,10 @@ export class SplitViewSummaryActionBarVisualComponent {
     { id: 1, name: 'Jennifer Standley', amount: 12.45, date: '04/28/2019' },
     { id: 2, name: 'Jennifer Standley', amount: 52.39, date: '04/22/2019' },
     { id: 3, name: 'Jennifer Standley', amount: 9.12, date: '04/09/2019' },
-    { id: 4, name: 'Jennifer Standley', amount: 193.00, date: '03/27/2019' },
+    { id: 4, name: 'Jennifer Standley', amount: 193.0, date: '03/27/2019' },
     { id: 5, name: 'Jennifer Standley', amount: 19.89, date: '03/11/2019' },
     { id: 6, name: 'Jennifer Standley', amount: 214.18, date: '02/17/2019' },
-    { id: 7, name: 'Jennifer Standley', amount: 4.53, date: '02/26/2019' }
+    { id: 7, name: 'Jennifer Standley', amount: 4.53, date: '02/26/2019' },
   ];
 
   public splitViewStream = new Subject<SkySplitViewMessage>();
@@ -63,15 +57,18 @@ export class SplitViewSummaryActionBarVisualComponent {
 
   public onItemClick(index: number): void {
     if (this.hasUnsavedWork && index !== this.activeIndex) {
-      this.confirmService.open({
-        message: 'You have unsaved work. Would you like to save it before you change records?',
-        type: SkyConfirmType.YesCancel
-      }).closed.subscribe((closeArgs: SkyConfirmCloseEventArgs) => {
-        if (closeArgs.action.toLowerCase() === 'yes') {
-          this.activeIndex = index;
-          this.setFocusInWorkspace();
-        }
-      });
+      this.confirmService
+        .open({
+          message:
+            'You have unsaved work. Would you like to save it before you change records?',
+          type: SkyConfirmType.YesCancel,
+        })
+        .closed.subscribe((closeArgs: SkyConfirmCloseEventArgs) => {
+          if (closeArgs.action.toLowerCase() === 'yes') {
+            this.activeIndex = index;
+            this.setFocusInWorkspace();
+          }
+        });
     } else {
       this.activeIndex = index;
       this.setFocusInWorkspace();
@@ -84,9 +81,8 @@ export class SplitViewSummaryActionBarVisualComponent {
 
   private setFocusInWorkspace(): void {
     const message: SkySplitViewMessage = {
-      type: SkySplitViewMessageType.FocusWorkspace
+      type: SkySplitViewMessageType.FocusWorkspace,
     };
     this.splitViewStream.next(message);
   }
-
 }

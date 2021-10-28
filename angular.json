@@ -168,9 +168,7 @@
               "projects/action-bars-showcase/src/favicon.ico",
               "projects/action-bars-showcase/src/assets"
             ],
-            "styles": [
-              "projects/action-bars-showcase/src/styles.scss"
-            ],
+            "styles": ["projects/action-bars-showcase/src/styles.scss"],
             "scripts": []
           }
         },
