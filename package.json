@@ -38,7 +38,6 @@
     "@skyux/modals": "5.0.1",
     "@skyux/packages": "5.38.0",
     "@skyux/popovers": "5.0.0",
-    "@skyux/split-view": "5.0.0",
     "@skyux/tabs": "5.0.1",
     "@skyux/theme": "5.0.3",
     "rxjs": "6.6.7",
