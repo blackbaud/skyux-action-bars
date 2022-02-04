@@ -3,11 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@skyux/action-bars": [
-        "node_modules/@skyux/action-bars",
-        "dist/action-bars",
-        "projects/action-bars/src/public-api.ts"
-      ],
+      "@skyux/action-bars": ["projects/action-bars/src/public-api.ts"],
       "action-bars": ["dist/action-bars/action-bars", "dist/action-bars"]
     },
     "baseUrl": "./",
